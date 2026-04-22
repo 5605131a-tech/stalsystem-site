@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Oferta – StalSystem Polska</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#d0d5dc; padding:32px 20px; color:#1a1a2e; }
+  .page { max-width:794px; margin:0 auto 28px auto; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 8px 36px rgba(0,0,0,0.16); page-break-after:always; }
+
+  /* HEADER */
+  .header { background:#0d1f3c; display:flex; align-items:stretch; min-height:120px; position:relative; overflow:hidden; }
+  .header-logo { background:#0a1829; border-right:1px solid rgba(255,255,255,0.08); padding:18px 22px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:160px; flex-shrink:0; }
+  .logo-text { font-family:'Montserrat',sans-serif; color:#fff; line-height:1.1; }
+  .logo-text .l1 { font-size:20px; font-weight:900; letter-spacing:-0.5px; }
+  .logo-text .l2 { font-size:14px; font-weight:400; letter-spacing:2px; color:rgba(255,255,255,0.65); }
+  .logo-text .lline { border-bottom:1px solid rgba(255,255,255,0.35); margin:4px 0 5px; }
+  .header-photo { flex:1; background-size:cover; background-position:center; position:relative; }
+  .header-photo::before { content:''; position:absolute; left:0; top:0; bottom:0; width:60px; background:linear-gradient(to right,#0a1829,transparent); }
+  .header-contacts { padding:20px 28px; display:flex; flex-direction:column; justify-content:center; text-align:right; position:relative; z-index:2; min-width:180px; background:linear-gradient(to left,rgba(13,31,60,0.92) 60%,transparent); }
+  .header-contacts .firm-name { font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:rgba(255,255,255,0.9); margin-bottom:5px; }
+  .header-contacts p { font-size:11.5px; color:rgba(255,255,255,0.55); line-height:1.8; }
+  .header-contacts .phone { color:#ff6b35; font-weight:700; font-size:14px; }
+
+  /* ORANGE BAR */
+  .orange-bar { background:#ff6b35; padding:9px 32px; display:flex; justify-content:space-between; align-items:center; }
+  .orange-bar .bar-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#fff; letter-spacing:2px; text-transform:uppercase; }
+  .orange-bar .bar-meta { font-size:11.5px; color:rgba(255,255,255,0.9); text-align:right; line-height:1.6; }
+
+  /* BODY */
+  .body { padding:26px 36px; }
+
+  /* PARTIES */
+  .parties-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:22px; }
+  .party-box { background:#f7fafc; border-radius:8px; padding:14px 16px; border-top:3px solid #0d1f3c; }
+  .party-box.client { border-top-color:#ff6b35; }
+  .party-role { font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#94a3b8; margin-bottom:6px; }
+  .party-name { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; color:#1a1a2e; margin-bottom:3px; }
+  .party-detail { font-size:11.5px; color:#64748b; line-height:1.7; }
+  .party-detail strong { color:#1a1a2e; }
+
+  /* TABLE */
+  .product-table { width:100%; border-collapse:collapse; margin-bottom:6px; font-size:12.5px; border:1px solid #e2e8f0; }
+  .product-table thead tr { background:#0d1f3c; }
+  .product-table thead th { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.75); padding:9px 12px; text-align:left; border-right:1px solid rgba(255,255,255,0.1); }
+  .product-table thead th:last-child { border-right:none; text-align:right; }
+  .product-table thead th:not(:first-child):not(:last-child) { text-align:right; }
+  .product-table tbody tr { border-bottom:1px solid #e2e8f0; }
+  .product-table tbody tr:last-child { border-bottom:none; }
+  .product-table tbody td { padding:9px 12px; color:#334155; vertical-align:middle; border-right:1px solid #e2e8f0; }
+  .product-table tbody td:last-child { border-right:none; text-align:right; font-weight:600; color:#1a1a2e; }
+  .product-table tbody td:not(:first-child):not(:last-child) { text-align:right; }
+  .product-name { font-weight:600; color:#1a1a2e; font-size:12.5px; }
+
+  /* TOTAL */
+  .table-subtotal { display:flex; justify-content:flex-end; margin-top:2px; margin-bottom:22px; }
+  .total-box { background:linear-gradient(135deg,#0d1f3c,#1a3a6b); border-radius:10px; padding:16px 24px; min-width:220px; text-align:right; }
+  .total-label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:4px; }
+  .total-amount { font-family:'Montserrat',sans-serif; font-size:32px; font-weight:900; color:#ff6b35; line-height:1; }
+  .total-amount .currency { font-size:15px; color:rgba(255,255,255,0.55); margin-left:3px; }
+  .total-note { font-size:10px; color:rgba(255,255,255,0.38); margin-top:4px; }
+
+  /* ADVANTAGES */
+  .adv-grid { display:grid; gap:10px; margin-bottom:10px; }
+  .adv-grid-4 { grid-template-columns:repeat(4,1fr); }
+  .adv-grid:last-of-type { margin-bottom:22px; }
+  .adv-item { background:#f7fafc; border-radius:8px; padding:13px 10px; text-align:center; border-top:3px solid #ff6b35; }
+  .adv-icon { font-size:20px; margin-bottom:6px; }
+  .adv-title { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:#1a1a2e; margin-bottom:3px; }
+  .adv-desc { font-size:10px; color:#64748b; line-height:1.4; }
+
+  /* BONUS ROW */
+  .bonus-row { display:flex; gap:10px; margin-bottom:20px; }
+  .bonus-item { flex:1; background:#fff8f0; border-left:4px solid #ff6b35; padding:10px 14px; display:flex; gap:10px; align-items:center; border-radius:6px; }
+  .bi-icon { font-size:20px; flex-shrink:0; }
+  .bi-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; color:#1a1a2e; margin-bottom:2px; }
+  .bi-desc { font-size:10px; color:#64748b; line-height:1.4; }
+
+  /* NOTE BOX */
+  .note-box { background:#f0f9ff; border-left:4px solid #0ea5e9; padding:12px 14px; border-radius:6px; font-size:11.5px; color:#0c4a6e; line-height:1.6; display:flex; gap:10px; }
+  .note-box strong { color:#0369a1; }
+
+  /* FOOTER */
+  .footer { background:#0d1f3c; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; color:rgba(255,255,255,0.6); font-size:11px; }
+  .footer-logo-text { display:flex; flex-direction:column; }
+  .footer-logo-text .fl1 { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:900; color:#fff; letter-spacing:-0.5px; }
+  .footer-logo-text .flline { border-bottom:1px solid rgba(255,255,255,0.35); margin:2px 0; }
+  .footer-logo-text .fl2 { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:400; letter-spacing:2px; color:rgba(255,255,255,0.65); }
+  .footer p { line-height:1.7; margin:1px 0; }
+  .footer strong { color:#fff; }
+  .footer-cta { background:#ff6b35; color:#fff; padding:10px 18px; border-radius:8px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; text-decoration:none; }
+
+  /* PAGE 2 */
+  .page2-header { background:#0d1f3c; padding:18px 32px; display:flex; justify-content:space-between; align-items:center; }
+  .page2-logo-text { display:flex; flex-direction:column; }
+  .page2-logo-text .pl1 { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:900; color:#fff; letter-spacing:-0.5px; }
+  .page2-logo-text .plline { border-bottom:1px solid rgba(255,255,255,0.35); margin:2px 0; }
+  .page2-logo-text .pl2 { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:400; letter-spacing:2px; color:rgba(255,255,255,0.65); }
+  .page2-label { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; letter-spacing:1px; color:rgba(255,255,255,0.75); text-transform:uppercase; }
+  .page2-body { padding:28px 36px; }
+  .warunki-title { font-family:'Montserrat',sans-serif; font-size:20px; font-weight:900; color:#0d1f3c; margin-bottom:6px; }
+  .warunki-subtitle { font-size:11px; color:#64748b; margin-bottom:24px; line-height:1.6; }
+  .wt-section { margin-bottom:12px; }
+  .wt-section-head { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:#0d1f3c; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .wt-section-head span { background:#ff6b35; color:#fff; font-size:9px; padding:3px 9px; border-radius:5px; font-weight:800; }
+  .wt-section-body { font-size:10px; color:#475569; line-height:1.7; padding-left:32px; }
+  .wt-section-body strong { color:#1a1a2e; font-weight:600; }
+  .signatures { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:50px; }
+  .sig-box { text-align:center; }
+  .sig-line { border-top:1px solid #cbd5e1; margin-bottom:8px; margin-top:60px; }
+  .sig-label { font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#94a3b8; margin-bottom:4px; }
+  .sig-name { font-size:11px; color:#64748b; }
+  .page2-footer { background:#f1f5f9; padding:14px 32px; display:flex; justify-content:space-between; font-size:10px; color:#475569; }
+  .page2-footer strong { color:#1a1a2e; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     INSTRUKCJA DLA MAKE.COM
+     
+     Ten szablon używa Handlebars.js (lub odpowiednika w Make).
+     
+     Dane przychodzące z webhooka (kalkulator na stronie):
+     - {{name}}            — imię klienta
+     - {{phone}}           — telefon klienta  
+     - {{email}}           — e-mail klienta (opcjonalnie)
+     - {{address}}         — adres klienta (opcjonalnie)
+     - {{price}}           — łączna cena (liczba)
+     - {{price_formatted}} — łączna cena (tekst, np. "1234.56 zł")
+     - {{product}}         — nazwa produktu (tekst ogólny)
+     - {{date}}            — data (ISO, np. "2026-04-22T10:00:00Z")
+     - {{offer_number}}    — numer oferty (generuj w Make: np. "SS-{{timestamp}}")
+     - {{items}}           — tablica pozycji zamówienia:
+         każda pozycja:
+           - name         — nazwa (np. "Panele 3D")
+           - qty          — ilość (liczba)
+           - unit         — jednostka (np. "szt", "mb", "m²")
+           - price_unit   — cena jednostkowa (liczba)
+           - total        — wartość łączna (liczba)
+     
+     W Make.com: użyj modułu "Set multiple variables" lub 
+     Text Template żeby wstrzyknąć dane do szablonu.
+     Następnie PDF4me lub HTML/CSS to PDF żeby wygenerować PDF.
+============================================================ -->
+
+<!-- STRONA 1 — OFERTA -->
+<div class="page">
+
+  <div class="header">
+    <div class="header-logo">
+      <div class="logo-text">
+        <div class="l1">StalSystem</div>
+        <div class="lline"></div>
+        <div class="l2">POLSKA</div>
+      </div>
+    </div>
+    <div class="header-photo" style="background-image:url('https://raw.githubusercontent.com/5605131a-tech/stalsystem-photos/main/hero.png');"></div>
+    <div class="header-contacts">
+      <p class="phone">+48 733 245 757</p>
+      <p style="margin-top:3px;font-size:10.5px;">WhatsApp · Messenger</p>
+      <p style="margin-top:6px;font-size:10.5px;">733245757a@gmail.com</p>
+    </div>
+  </div>
+
+  <div class="orange-bar">
+    <span class="bar-title">Oferta cenowa</span>
+    <div class="bar-meta">
+      Nr: <strong>{{offer_number}}</strong> &nbsp;|&nbsp; Data: <strong>{{date}}</strong> &nbsp;|&nbsp; Ważna: <strong>7 dni</strong>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- STRONY -->
+    <div class="parties-grid">
+      <div class="party-box">
+        <div class="party-role">Sprzedawca</div>
+        <div class="party-name">StalSystem Polska</div>
+        <div class="party-detail">
+          Anatolii Romanchyshen<br>
+          Poznań i okolice, Wielkopolska<br>
+          Tel: +48 733 245 757<br>
+          733245757a@gmail.com
+        </div>
+      </div>
+      <div class="party-box client">
+        <div class="party-role">Klient / Zamawiający</div>
+        <div class="party-name">{{name}}</div>
+        <div class="party-detail">
+          Tel: <strong>{{phone}}</strong><br>
+          {{#if email}}E-mail: {{email}}<br>{{/if}}
+          {{#if address}}Adres: {{address}}{{/if}}
+        </div>
+      </div>
+    </div>
+
+    <!-- TABELA POZYCJI — dynamiczna z items[] -->
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th style="width:46%">Produkt / Usługa</th>
+          <th>Ilość</th>
+          <th>J.m.</th>
+          <th>Cena jedn.</th>
+          <th>Wartość</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each items}}
+        <tr>
+          <td><span class="product-name">{{this.name}}</span></td>
+          <td>{{this.qty}}</td>
+          <td style="color:#64748b;font-size:11px;">{{this.unit}}</td>
+          <td>{{this.price_unit}} zł</td>
+          <td>{{this.total}} zł</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="table-subtotal">
+      <div class="total-box">
+        <div class="total-label">Razem</div>
+        <div class="total-amount">{{price_formatted}}<span class="currency"></span></div>
+        <div class="total-note">Finalna cena po bezpłatnym pomiarze</div>
+      </div>
+    </div>
+
+    <!-- ADVANTAGES -->
+    <div class="adv-grid adv-grid-4">
+      <div class="adv-item">
+        <div class="adv-icon">🛡️</div>
+        <div class="adv-title">Gwarancja 12 lat</div>
+        <div class="adv-desc">Na materiały i powłokę</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">🔧</div>
+        <div class="adv-title">Gwarancja 2 lata</div>
+        <div class="adv-desc">Na jakość montażu</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">📐</div>
+        <div class="adv-title">Bezpłatny pomiar</div>
+        <div class="adv-desc">Wizja lokalna gratis</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">⚡</div>
+        <div class="adv-title">Montaż w 48h</div>
+        <div class="adv-desc">Szybka realizacja</div>
+      </div>
+    </div>
+
+    <div class="adv-grid adv-grid-4">
+      <div class="adv-item">
+        <div class="adv-icon">🏷️</div>
+        <div class="adv-title">Tabliczka adresowa</div>
+        <div class="adv-desc">Gratis w komplecie</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">🎨</div>
+        <div class="adv-title">Wizualizacja 3D</div>
+        <div class="adv-desc">Bezpłatnie</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">💰</div>
+        <div class="adv-title">Taniej montaż!</div>
+        <div class="adv-desc">-10% przy komplecie (3+ produktów)</div>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">🚚</div>
+        <div class="adv-title">Dostawa pod dom</div>
+        <div class="adv-desc">Wygodnie i szybko</div>
+      </div>
+    </div>
+
+    <div style="font-size:10.5px;color:#64748b;text-align:center;margin-top:8px;margin-bottom:18px;line-height:1.5;">
+      * Rabat -10% na montaż przy zakupie min. 3 produktów (np. ogrodzenie + brama + furtka)
+    </div>
+
+    <div class="note-box">
+      <div style="font-size:16px;flex-shrink:0;padding-top:1px;">ℹ️</div>
+      <div>Wycena przygotowana na podstawie podanych wymiarów. <strong>Cena finalna zostanie ustalona po bezpłatnym pomiarze na miejscu.</strong> Zastrzegamy możliwość korekty w przypadku zmiany zakresu lub warunków terenu.</div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo-text">
+      <div class="fl1">StalSystem</div>
+      <div class="flline"></div>
+      <div class="fl2">POLSKA</div>
+    </div>
+    <div>
+      <p>Poznań · Wielkopolska</p>
+      <p>733245757a@gmail.com</p>
+    </div>
+    <a class="footer-cta" href="tel:+48733245757">📞 +48 733 245 757</a>
+  </div>
+
+</div>
+
+<!-- STRONA 2 — WARUNKI -->
+<div class="page">
+
+  <div class="page2-header">
+    <div class="page2-logo-text">
+      <div class="pl1">StalSystem</div>
+      <div class="plline"></div>
+      <div class="pl2">POLSKA</div>
+    </div>
+    <span class="page2-label">Warunki realizacji zamówienia</span>
+  </div>
+
+  <div class="page2-body">
+
+    <div class="warunki-title">Warunki realizacji zamówienia</div>
+    <div class="warunki-subtitle">
+      Oferta nr <strong>{{offer_number}}</strong> · Data: {{date}} · StalSystem Polska – Anatolii Romanchyshen, Poznań
+    </div>
+
+    <div class="wt-section">
+      <div class="wt-section-head"><span>01</span> Warunki płatności – materiały</div>
+      <div class="wt-section-body">
+        1.1. Warunkiem realizacji zamówienia jest wpłata zadatku w wysokości <strong>50% wartości materiałów</strong>.<br>
+        1.2. Pozostałe <strong>50% wartości materiałów</strong> należy uiścić przed dostawą towaru na miejsce budowy.<br>
+        1.3. W przypadku rezygnacji Zamawiającego z realizacji zamówienia po wpłacie zadatku, zadatek <strong>nie podlega zwrotowi</strong>.<br>
+        1.4. Brak terminowej wpłaty drugiej części może skutkować wstrzymaniem dostawy i realizacji zamówienia.
+      </div>
+    </div>
+
+    <div class="wt-section">
+      <div class="wt-section-head"><span>02</span> Warunki płatności – montaż</div>
+      <div class="wt-section-body">
+        2.1. Przed rozpoczęciem prac montażowych Zamawiający zobowiązany jest do wpłaty zaliczki w wysokości <strong>40% wartości usługi montażu</strong>.<br>
+        2.2. Pozostała część wynagrodzenia za montaż płatna jest <strong>w dniu zakończenia prac montażowych</strong>, przed podpisaniem protokołu odbioru.<br>
+        2.3. W przypadku braku płatności w ustalonym terminie Wykonawca ma prawo wstrzymać realizację prac montażowych.
+      </div>
+    </div>
+
+    <div class="wt-section">
+      <div class="wt-section-head"><span>03</span> Termin realizacji</div>
+      <div class="wt-section-body">
+        3.1. Termin realizacji zamówienia ustalany jest indywidualnie i liczony od momentu zaksięgowania pierwszej wpłaty (zadatku/zaliczki).<br>
+        3.2. Termin realizacji może ulec zmianie w przypadku: niekorzystnych warunków atmosferycznych, opóźnień w dostawie materiałów od producenta lub innych okoliczności niezależnych od Wykonawcy.<br>
+        3.3. O zmianie terminu Wykonawca zobowiązuje się poinformować Zamawiającego niezwłocznie.
+      </div>
+    </div>
+
+    <div class="wt-section">
+      <div class="wt-section-head"><span>04</span> Obowiązki Zamawiającego</div>
+      <div class="wt-section-body">
+        4.1. Zamawiający zobowiązany jest do zapewnienia swobodnego dostępu do miejsca realizacji prac w uzgodnionym terminie.<br>
+        4.2. Zamawiający zobowiązany jest do przygotowania terenu pod montaż (usunięcie starego ogrodzenia, przeszkód itp.), o ile nie ustalono inaczej.<br>
+        4.3. Zamawiający zobowiązany jest do zapewnienia możliwości dojazdu dla pojazdu ciężarowego do miejsca montażu/dostawy.<br>
+        4.4. W przypadku zakupu samych materiałów (bez usługi montażu), Zamawiający zobowiązany jest do <strong>rozładunku towaru we własnym zakresie</strong>.<br>
+        4.5. Dostawa materiałów realizowana jest samochodem ciężarowym typu <strong>DAF</strong> lub podobnym.<br>
+        4.6. Zamawiający zobowiązany jest do zapewnienia <strong>minimum 3 osób do rozładunku</strong> w dniu dostawy.<br>
+        4.7. Brak możliwości rozładunku lub braku dojazdu z winy Zamawiającego może skutkować zmianą terminu dostawy i naliczeniem dodatkowych kosztów transportu.
+      </div>
+    </div>
+
+    <div class="wt-section">
+      <div class="wt-section-head"><span>05</span> Palety – kaucja zwrotna</div>
+      <div class="wt-section-body">
+        5.1. Materiały dostarczane są na paletach zwrotnych stanowiących własność Wykonawcy.<br>
+        5.2. Za każdą paletę pobierana jest kaucja zwrotna w wysokości ustalonej indywidualnie w zamówieniu.<br>
+        5.3. Zwrot palet w stanie nieuszkodzonym powinien nastąpić w terminie do <strong>7 dni od daty dostawy</strong>.<br>
+        5.4. W przypadku braku zwrotu palet w wyznaczonym terminie, kaucja <strong>przepada na rzecz Wykonawcy</strong>.
+      </div>
+    </div>
+
+    <div class="wt-section">
+      <div class="wt-section-head"><span>06</span> Postanowienia końcowe</div>
+      <div class="wt-section-body">
+        6.1. Oferta ważna jest przez okres <strong>7 dni</strong> od daty wystawienia.<br>
+        6.2. Ceny podane w ofercie mogą ulec zmianie do momentu wpłaty zadatku przez Zamawiającego.<br>
+        6.3. Wszelkie zmiany zakresu prac lub specyfikacji materiałów wymagają indywidualnej wyceny i pisemnego potwierdzenia przez obie strony.<br>
+        6.4. Złożenie zamówienia lub wpłata zadatku/zaliczki oznacza <strong>akceptację niniejszych warunków realizacji zamówienia</strong>.<br>
+        6.5. W sprawach nieuregulowanych niniejszymi warunkami zastosowanie mają przepisy Kodeksu Cywilnego Rzeczypospolitej Polskiej.
+      </div>
+    </div>
+
+    <div class="signatures">
+      <div class="sig-box">
+        <div class="sig-line"></div>
+        <div class="sig-label">Podpis Sprzedawcy</div>
+        <div class="sig-name">Anatolii Romanchyshen / StalSystem Polska</div>
+      </div>
+      <div class="sig-box">
+        <div class="sig-line"></div>
+        <div class="sig-label">Podpis Zamawiającego</div>
+        <div class="sig-name">Data i czytelny podpis</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page2-footer">
+    <p><strong>StalSystem Polska</strong> · Poznań · Wielkopolska</p>
+    <p style="text-align:right;"><strong>+48 733 245 757</strong> · 733245757a@gmail.com · WhatsApp · Messenger</p>
+  </div>
+
+</div>
+
+</body>
+</html>
