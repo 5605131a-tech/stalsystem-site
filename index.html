@@ -264,10 +264,19 @@ body{
 .trust-l{font-size:0.6rem;color:var(--gray);font-weight:600;margin-top:1px}
 
 /* ── PTABS ── */
-.ptabs{display:flex;gap:6px;margin-bottom:10px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.ptabs::-webkit-scrollbar{display:none}
+.ptabs{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:6px;
+  margin-bottom:10px;
+  padding-bottom:2px;
+}
+/* На дуже маленьких екранах (до 360px) — 2 колонки */
+@media(max-width:360px){
+  .ptabs{grid-template-columns:repeat(2, 1fr);}
+}
 .ptab{
-  flex-shrink:0;background:#fff;
+  background:#fff;
   border:2px solid var(--border);border-radius:12px;
   /* минимум 44px высота для пальца! */
   min-height:60px;
@@ -275,7 +284,7 @@ body{
   font-family:'Nunito',sans-serif;font-weight:700;font-size:0.76rem;
   color:var(--gray);transition:all .18s;line-height:1.3;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  box-shadow:0 2px 8px rgba(13,31,60,0.05);min-width:68px;
+  box-shadow:0 2px 8px rgba(13,31,60,0.05);
 }
 .ptab .ico{font-size:1.2rem;display:block;margin-bottom:2px}
 .ptab:hover{border-color:var(--orange);color:var(--orange)}
@@ -552,8 +561,7 @@ body{
   .hero-h1{font-size:2.2rem;}
   .hero-price{font-size:3rem;}
   .trust-strip{grid-template-columns:repeat(4,1fr);}
-  .ptabs{flex-wrap:wrap;}
-  .ptab{min-width:120px;font-size:0.85rem;}
+  /* .ptabs тепер grid — правила вище */
   .card{padding:24px;}
   .tiles.t4{grid-template-columns:repeat(4,1fr);}
   .tiles.t3{grid-template-columns:repeat(3,1fr);}
@@ -582,6 +590,139 @@ body{
   .trust-bar{gap:8px;}
   .tb-sep{display:none}
   .tb-item{font-size:0.68rem}
+}
+
+/* ── ВАЛІДАЦІЯ ПОЛІВ ── */
+.error-shake {
+  animation: error-shake 0.3s ease-in-out 3;
+  border: 2px solid #ef4444 !important;
+}
+
+@keyframes error-shake {
+  0%, 100% { 
+    border-color: #ef4444; 
+    transform: translateX(0); 
+  }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+input.valid-field {
+  border: 2px solid #10b981 !important;
+}
+
+.field-hint {
+  display: none;
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ── CONTACT GRID (2x2 компактна сітка) ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.contact-card {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.contact-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Візуальний radio button (кружок) */
+.contact-card-content::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  margin-right: 2px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.contact-card input[type="radio"]:checked + .contact-card-content::before {
+  border-color: #4f9eff;
+  background: #4f9eff;
+  box-shadow: 0 0 0 3px rgba(79,158,255,0.2), inset 0 0 0 3px #fff;
+}
+
+.contact-card-content {
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 10px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  min-height: 60px;
+}
+
+.contact-card input[type="radio"]:checked + .contact-card-content {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.3);
+}
+
+.contact-card:hover .contact-card-content {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.contact-card-content svg {
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.8);
+}
+
+.contact-card input[type="radio"]:checked + .contact-card-content svg {
+  color: #fff;
+}
+
+.contact-card[data-method="msg"] .contact-card-content svg {
+  color: #0084FF;
+}
+
+.contact-card[data-method="wa"] .contact-card-content svg {
+  color: #25D366;
+}
+
+.contact-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-card-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.contact-card-time {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.2;
+}
+
+.contact-card input[type="radio"]:checked + .contact-card-content .contact-card-time {
+  color: rgba(255,255,255,0.75);
+  font-weight: 600;
 }
 </style>
 <!-- Facebook Pixel Code -->
@@ -643,13 +784,13 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
   }
 }
 </script>
-<!-- Google Analytics GA4 — замени G-B9QH1CPDDS на свой ID с analytics.google.com -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B9QH1CPDDS"></script>
+<!-- Google Analytics GA4 — замени G-XXXXXXXXXX на свой ID с analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments);}
   gtag('js',new Date());
-  gtag('config','G-B9QH1CPDDS');
+  gtag('config','G-XXXXXXXXXX');
   function trackGA4Lead(product,price){
     gtag('event','generate_lead',{currency:'PLN',value:price,items:[{item_name:product}]});
   }
@@ -710,8 +851,23 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
       </div>
       <div class="ndrop-item" onclick="goCalc('wi')">
         <div class="ndi-ico">🏠</div>
-        <div class="ndi-txt"><div class="ndi-name">Wiata / Garaż</div><div class="ndi-desc">Stalowa, dach poliwęglan</div></div>
+        <div class="ndi-txt"><div class="ndi-name">Wiata</div><div class="ndi-desc">Stalowa, dach poliwęglan</div></div>
         <div class="ndi-price">od 258 zł/m²</div>
+      </div>
+      <div class="ndrop-item" onclick="goCalc('kb')">
+        <div class="ndi-ico">🪨</div>
+        <div class="ndi-txt"><div class="ndi-name">Kostka brukowa</div><div class="ndi-desc">Materiał + układanie</div></div>
+        <div class="ndi-price">od 163 zł/m²</div>
+      </div>
+      <div class="ndrop-item" onclick="goCalc('gb')">
+        <div class="ndi-ico">🪨</div>
+        <div class="ndi-txt"><div class="ndi-name">Gabiony</div><div class="ndi-desc">Siatka + kamień + montaż</div></div>
+        <div class="ndi-price">od 130 zł/mb</div>
+      </div>
+      <div class="ndrop-item" onclick="goCalc('wd')">
+        <div class="ndi-ico">📹</div>
+        <div class="ndi-txt"><div class="ndi-name">Wideodomofon</div><div class="ndi-desc">IP / Analogowy + montaż</div></div>
+        <div class="ndi-price">od 4500 zł</div>
       </div>
     </div>
   </div>
@@ -787,6 +943,9 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
   <button class="ptab" onclick="switchProd(this,'br')"><span class="ico">🚪</span>Brama</button>
   <button class="ptab" onclick="switchProd(this,'fu')"><span class="ico">🚶</span>Furtka</button>
   <button class="ptab" onclick="switchProd(this,'wi')"><span class="ico">🏠</span>Wiata</button>
+  <button class="ptab" onclick="switchProd(this,'kb')"><span class="ico">🪨</span>Kostka brukowa</button>
+  <button class="ptab" onclick="switchProd(this,'gb')"><span class="ico">🪨</span>Gabiony</button>
+  <button class="ptab" onclick="switchProd(this,'wd')"><span class="ico">📹</span>Wideodomofon</button>
 </div>
 
 <div class="card reveal">
@@ -986,6 +1145,91 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
     <div class="res" id="res-wi"></div>
   </div>
 
+  <!-- KOSTKA BRUKOWA -->
+  <div class="sec" id="sec-kb">
+    <div class="ctitle">🪨 Kalkulator kostki brukowej</div>
+    <div class="csub">Materiał + układanie z fugami — gotowa cena za m²</div>
+    
+    <div class="field"><label>Powierzchnia (m²)</label>
+      <input type="number" id="kb-sqm" min="5" value="30" step="0.5" oninput="calcKB()" 
+        style="width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;font-weight:600">
+      <small style="color:var(--gray);font-size:0.78rem;margin-top:6px;display:block">Min. 5 m² | Podjazd + chodnik</small>
+    </div>
+    
+    <div class="field"><label>Materiał kostki (grubość 6cm)</label>
+      <div class="tiles t3">
+        <div class="tile on" data-g="kb-mat" data-v="60" onclick="pick(this);calcKB()">Betonowa szara<s>60 zł/m²</s></div>
+        <div class="tile" data-g="kb-mat" data-v="108" onclick="pick(this);calcKB()">Płukana kolor<s>108 zł/m²</s></div>
+        <div class="tile" data-g="kb-mat" data-v="200" onclick="pick(this);calcKB()">Granit naturalny<s>200 zł/m²</s></div>
+      </div>
+    </div>
+    
+    <div class="field"><label>Robocizna układki (z fugami)</label>
+      <div class="tiles t3">
+        <div class="tile on" data-g="kb-rob" data-v="103" onclick="pick(this);calcKB()">Prostokąt bez wzoru<s>103 zł/m²</s></div>
+        <div class="tile" data-g="kb-rob" data-v="146" onclick="pick(this);calcKB()">Wzory jodełka/łuk<s>146 zł/m²</s></div>
+        <div class="tile" data-g="kb-rob" data-v="200" onclick="pick(this);calcKB()">Granit + koła/łuki<s>200 zł/m²</s></div>
+      </div>
+    </div>
+    
+    <div id="res-kb"></div>
+  </div>
+
+  <!-- GABIONY -->
+  <div class="sec" id="sec-gb">
+    <div class="ctitle">🪨 Kalkulator gabionów</div>
+    <div class="csub">Siatka + kamień + montaż — gotowa cena za mb</div>
+    
+    <div class="field"><label>Długość ogrodzenia (mb)</label>
+      <input type="number" id="gb-mb" min="10" value="20" oninput="calcGB()" 
+        style="width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;font-weight:600">
+      <small style="color:var(--gray);font-size:0.78rem;margin-top:6px;display:block">Min. 10 mb | Z transportem gratis</small>
+    </div>
+    
+    <div class="field"><label>Siatka gabionowa (ocynk 5mm)</label>
+      <div class="tiles t3">
+        <div class="tile on" data-g="gb-siatka" data-v="80" onclick="pick(this);calcGB()">1.0m wysokość<s>80 zł/mb</s></div>
+        <div class="tile" data-g="gb-siatka" data-v="130" onclick="pick(this);calcGB()">1.5m ceownik<s>130 zł/mb</s></div>
+        <div class="tile" data-g="gb-siatka" data-v="200" onclick="pick(this);calcGB()">2.0m+ antywind<s>200 zł/mb</s></div>
+      </div>
+    </div>
+    
+    <div class="field"><label>Kamień (0.5 m³ na mb)</label>
+      <div class="tiles t3">
+        <div class="tile on" data-g="gb-kamien" data-v="50" onclick="pick(this);calcGB()">Polny/granit<s>50 zł/m³</s></div>
+        <div class="tile" data-g="gb-kamien" data-v="100" onclick="pick(this);calcGB()">Rzeczny płukany<s>100 zł/m³</s></div>
+        <div class="tile" data-g="gb-kamien" data-v="150" onclick="pick(this);calcGB()">Biały ozdobny<s>150 zł/m³</s></div>
+      </div>
+    </div>
+    
+    <div id="res-gb"></div>
+  </div>
+
+  <!-- WIDEODOMOFON -->
+  <div class="sec" id="sec-wd">
+    <div class="ctitle">📹 Kalkulator wideodomofonu</div>
+    <div class="csub">Sprzęt + montaż + konfiguracja — gotowa cena</div>
+    
+    <div class="field"><label>Typ wideodomofonu</label>
+      <div class="tiles t2">
+        <div class="tile on" data-g="wd-typ" data-v="4500" onclick="pick(this);calcWD()">IP WiFi + monitor<s>4500 zł</s></div>
+        <div class="tile" data-g="wd-typ" data-v="6500" onclick="pick(this);calcWD()">IP WiFi + 2 monitory<s>6500 zł</s></div>
+        <div class="tile" data-g="wd-typ" data-v="8500" onclick="pick(this);calcWD()">IP Premium + app<s>8500 zł</s></div>
+        <div class="tile" data-g="wd-typ" data-v="12000" onclick="pick(this);calcWD()">System willi + 3 mon.<s>12000 zł</s></div>
+      </div>
+    </div>
+    
+    <div class="field"><label>Dodatkowe opcje</label>
+      <div class="tiles t3">
+        <div class="tile" data-g="wd-extra" data-v="0" onclick="pick(this);calcWD()">Bez dodatków<s>0 zł</s></div>
+        <div class="tile" data-g="wd-extra" data-v="800" onclick="pick(this);calcWD()">Kamera dodatkowa<s>+800 zł</s></div>
+        <div class="tile" data-g="wd-extra" data-v="1200" onclick="pick(this);calcWD()">Bramka + zamek<s>+1200 zł</s></div>
+      </div>
+    </div>
+    
+    <div id="res-wd"></div>
+  </div>
+
 </div><!-- /card -->
 
 <!-- GALERIA REALIZACJI -->
@@ -1069,8 +1313,8 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
 </div>
 
 <div style="padding:0 16px 8px;font-size:0.7rem;color:#94a3b8;line-height:1.8;">
-  <strong style="color:#64748b">StalSystem Polska</strong> — ogrodzenia panelowe 3D, bramy przesuwne i dwuskrzydłowe, furtki, wiaty stalowe i garaże blaszane.
-  Obsługujemy: <strong>Środa Wielkopolska</strong>, Poznań, Gniezno, Kalisz, Leszno, Kościan, Września, Ostrów Wielkopolski i całe <strong>województwo wielkopolskie</strong>.
+  <strong style="color:#64748b">StalSystem Polska</strong> — Kostka brukowa, gabiony, wideodomofony, oświetlenie.
+  Obsługujemy: <strong>Środa Wielkopolska</strong>, Poznań, Gniezno, Kalisz, Leszno, Kościan, Września, Ostrów Wielkopolski i całe <strong>województwo Wielkopolskie</strong>.
   Materiały wysyłamy do całej Polski. Tel: <a href="tel:+48733245757" style="color:#ff6b35">+48 733 245 757</a> · E-mail: <a href="mailto:733245757a@gmail.com" style="color:#ff6b35">733245757a@gmail.com</a>
 </div>
 </div><!-- /wrap -->
@@ -1118,9 +1362,17 @@ function switchProd(btn,id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   btn.classList.add('on');
   document.getElementById('sec-'+id).classList.add('on');
+  
+  // Автоматичний перерахунок для нових калькуляторів
+  setTimeout(()=>{
+    if(id==='kb' && typeof calcKB==='function')calcKB();
+    if(id==='gb' && typeof calcGB==='function')calcGB();
+    if(id==='wd' && typeof calcWD==='function')calcWD();
+  },50);
+  
   // Facebook Pixel — ViewContent
   if(typeof fbq!=='undefined'){
-    const names={og:'Ogrodzenie 3D',dl:'DELUXE',br:'Brama',fu:'Furtka',wi:'Wiata'};
+    const names={og:'Ogrodzenie 3D',dl:'DELUXE',br:'Brama',fu:'Furtka',wi:'Wiata',kb:'Kostka brukowa',gb:'Gabiony',wd:'Wideodomofon'};
     fbq('track','ViewContent',{content_name:names[id]||id,content_category:'Ogrodzenia'});
   }
 }
@@ -1141,7 +1393,7 @@ function scrollToCalc(){
   document.getElementById('calc-anchor').scrollIntoView({behavior:'smooth'});
 }
 function goCalc(id){
-  const ids=['og','dl','br','fu','wi'];
+  const ids=['og','dl','br','fu','wi','kb','gb','wd'];
   const idx=ids.indexOf(id);
   if(idx>=0)document.querySelectorAll('.ptab')[idx].click();
   document.getElementById('ndrop').classList.remove('show');
@@ -1189,35 +1441,94 @@ function leadHTML(label,total,items){
     <div class="lben">✉️ Odpisujemy w 30 min</div>
     <div class="lben">✅ Bez zobowiązań</div>
   </div>
+  <div style="background:linear-gradient(135deg,rgba(255,107,53,0.18),rgba(255,107,53,0.08));border:1.5px solid rgba(255,107,53,0.5);border-radius:12px;padding:11px 14px;margin-bottom:13px;display:flex;align-items:center;gap:10px;">
+    <span style="font-size:1.6rem;flex-shrink:0;">🎁</span>
+    <div>
+      <div style="font-weight:900;font-size:0.88rem;color:#fff;line-height:1.3;">Tabliczka adresowa na ogrodzenie — GRATIS</div>
+      <div style="font-size:0.76rem;color:rgba(255,255,255,0.65);margin-top:2px;">Elegancka tabliczka z numerem domu &nbsp;·&nbsp; <s style="opacity:0.55">wartość 150 zł</s> &nbsp;·&nbsp; <strong style="color:#ff9a75;">dla Ciebie bezpłatnie</strong></div>
+    </div>
+  </div>
   <div id="lf-${id}">
+    <input class="linp" type="text" id="ln-${id}" placeholder="👤 Imię i nazwisko *" required>
+    <div class="field-hint" id="ln-hint-${id}">⚠️ Podaj swoje imię</div>
+    
     <input class="linp" type="tel" id="lp-${id}" 
-      placeholder="📱 +48 ___ ___ ___  *" 
+      placeholder="📱 Telefon *" 
       maxlength="15"
       oninput="fmtPhone(this);if(this.value.length===4&&typeof fbq!=='undefined'){fbq('track','InitiateCheckout',{content_name:'Lead form'})}"
-      style="letter-spacing:1px">
-    <div class="linp-hint" id="lp-hint-${id}" style="display:none;color:#ef4444;font-size:0.72rem;margin-top:-10px;margin-bottom:8px;padding-left:4px">
-      ⚠️ Podaj numer w formacie: +48 123 456 789
-    </div>
-    <input class="linp" type="text" id="ln-${id}" placeholder="👤 Imię *" required>
-    <div class="linp-hint" id="ln-hint-${id}" style="display:none;color:#ef4444;font-size:0.72rem;margin-top:-10px;margin-bottom:8px;padding-left:4px">
-      ⚠️ Podaj swoje imię
-    </div>
-    <input class="linp" type="email" id="le-${id}" placeholder="✉️ Email (opcjonalnie)">
+      onblur="validatePhone(this,'${id}')"
+      style="letter-spacing:1px"
+      required>
+    <div class="field-hint" id="lp-hint-${id}">⚠️ Podaj numer w formacie: +48 123 456 789</div>
+    
+    <input class="linp" type="email" id="le-${id}" placeholder="✉️ Email *" required>
+    <div class="field-hint" id="le-hint-${id}">⚠️ Podaj poprawny adres email</div>
+    
     <input class="linp" type="text" id="la-${id}" 
-      placeholder="📍 Miejscowość (np. Poznań)">
+      placeholder="📍 Miejscowość *"
+      required>
+    <div class="field-hint" id="la-hint-${id}">⚠️ Podaj miejscowość</div>
+    
     <input class="linp" type="text" id="lz-${id}" 
-      placeholder="📮 Kod pocztowy (XX-XXX)"
+      placeholder="📮 Kod pocztowy *"
       maxlength="6"
-      oninput="fmtPostal(this)">
-    <div style="font-size:0.77rem;opacity:.7;margin-bottom:8px;font-weight:700">Jak wolisz żebyśmy się odezwali?</div>
-    <div class="contact-choice">
-      <button class="cc-btn cc-msg on" id="cc-msg-${id}" onclick="ccPick('${id}','msg')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/></svg> Messenger</button>
-      <button class="cc-btn cc-wa" id="cc-wa-${id}" onclick="ccPick('${id}','wa')"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</button>
-      <button class="cc-btn cc-call" id="cc-call-${id}" onclick="ccPick('${id}','call')">📞 Telefon</button>
+      oninput="fmtPostal(this)"
+      onblur="validatePostal(this,'${id}')"
+      required>
+    <div style="font-size:0.72rem;color:rgba(255,255,255,0.6);margin-top:4px;margin-bottom:8px;padding-left:4px">💡 Do wyceny dostawy</div>
+    <div class="field-hint" id="lz-hint-${id}">⚠️ Kod pocztowy musi mieć 5 cyfr (np. 63-000)</div>
+    
+    <div style="font-size:0.82rem;font-weight:700;margin-bottom:8px;margin-top:12px;color:#fff">📲 Jak chcesz otrzymać ofertę PDF?</div>
+    <div class="contact-grid" id="contact-grid-${id}">
+      <label class="contact-card" data-method="email">
+        <input type="radio" name="lc-${id}" value="email" onchange="toggleEmailRequired('${id}',this.value)" checked>
+        <div class="contact-card-content">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          <div class="contact-card-text">
+            <div class="contact-card-title">Email</div>
+            <div class="contact-card-time">PDF w ciągu 30 minut</div>
+          </div>
+        </div>
+      </label>
+      
+      <label class="contact-card" data-method="msg">
+        <input type="radio" name="lc-${id}" value="msg" onchange="toggleEmailRequired('${id}',this.value)">
+        <div class="contact-card-content">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/></svg>
+          <div class="contact-card-text">
+            <div class="contact-card-title">Messenger</div>
+            <div class="contact-card-time">PDF w ciągu 30 minut</div>
+          </div>
+        </div>
+      </label>
+      
+      <label class="contact-card" data-method="wa">
+        <input type="radio" name="lc-${id}" value="wa" onchange="toggleEmailRequired('${id}',this.value)">
+        <div class="contact-card-content">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div class="contact-card-text">
+            <div class="contact-card-title">WhatsApp</div>
+            <div class="contact-card-time">Kontakt w ciągu 24h</div>
+          </div>
+        </div>
+      </label>
+      
+      <label class="contact-card" data-method="call">
+        <input type="radio" name="lc-${id}" value="call" onchange="toggleEmailRequired('${id}',this.value)">
+        <div class="contact-card-content">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <div class="contact-card-text">
+            <div class="contact-card-title">Telefon</div>
+            <div class="contact-card-time">Oddzwonimy lub odpiszemy SMS w ciągu 24h</div>
+          </div>
+        </div>
+      </label>
     </div>
-    <input type="hidden" id="lc-${id}" value="msg">
-    <button class="blead" style="margin-top:8px" onclick="sendLead('${id}','${label.replace(/'/g,"\\'")}',${total})">
-      📩 Otrzymaj dokładną wycenę →
+    
+    <div class="field-hint" id="contact-hint-${id}" style="margin-top:8px">⚠️ Wybierz sposób kontaktu</div>
+    
+    <button class="blead" id="submit-${id}" style="margin-top:12px" onclick="sendLead('${id}','${label.replace(/'/g,"\\'")}',${total})">
+      📩 Wyślij formularz →
     </button>
   </div>
   <div class="lok" id="lo-${id}">
@@ -1253,6 +1564,56 @@ function getUTM(){
     utm_content:p.get('utm_content')||'none'
   };
 }
+// Отримати PSID з URL (якщо клієнт прийшов через ManyChat)
+function getPSID() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('psid') || params.get('ref') || '';
+}
+
+// Валідація телефону
+function validatePhone(input, formId) {
+  const value = input.value.replace(/[^\d]/g, '');
+  const hint = document.getElementById('lp-hint-' + formId);
+  
+  if (value.length !== 11 || !value.startsWith('48')) {
+    input.style.borderColor = '#ef4444';
+    input.classList.add('error-shake');
+    if (hint) hint.style.display = 'block';
+    setTimeout(() => input.classList.remove('error-shake'), 900);
+    return false;
+  } else {
+    input.style.borderColor = '#10b981';
+    input.classList.add('valid-field');
+    if (hint) hint.style.display = 'none';
+    return true;
+  }
+}
+
+// Валідація коду почтового
+function validatePostal(input, formId) {
+  const value = input.value.replace(/[^\d]/g, '');
+  const hint = document.getElementById('lz-hint-' + formId);
+  
+  if (value.length !== 5) {
+    input.style.borderColor = '#ef4444';
+    input.classList.add('error-shake');
+    if (hint) hint.style.display = 'block';
+    setTimeout(() => input.classList.remove('error-shake'), 900);
+    return false;
+  } else {
+    input.style.borderColor = '#10b981';
+    input.classList.add('valid-field');
+    if (hint) hint.style.display = 'none';
+    return true;
+  }
+}
+
+// Email завжди обов'язковий
+function toggleEmailRequired(formId, method) {
+  // Email завжди required, нічого не міняємо
+  // Функція залишається для сумісності
+}
+
 function fmtPhone(el){
   // Форматируем телефон: +48 123 456 789
   let v=el.value.replace(/[^\d+]/g,'');
@@ -1274,65 +1635,135 @@ function fmtPostal(el){
   if(v.length>2) v=v.slice(0,2)+'-'+v.slice(2,5);
   el.value=v;
 }
-function validatePhone(v){
-  const digits=v.replace(/[^\d]/g,'');
-  // Должно быть 48 + 9 цифр = 11 цифр
-  return digits.length===11 && digits.startsWith('48');
-}
 function validateEmail(v){
   return v==='' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
 function sendLead(id,product,price,items){
   const phone=document.getElementById('lp-'+id).value.trim();
   const name=document.getElementById('ln-'+id).value.trim();
-  const phoneHint=document.getElementById('lp-hint-'+id);
-  const nameHint=document.getElementById('ln-hint-'+id);
-  // Валидация телефона
-  if(!validatePhone(phone)){
-    if(phoneHint) phoneHint.style.display='block';
-    document.getElementById('lp-'+id).focus();
-    document.getElementById('lp-'+id).style.borderColor='#ef4444';
-    return;
-  } else {
-    if(phoneHint) phoneHint.style.display='none';
-    document.getElementById('lp-'+id).style.borderColor='';
-  }
-  // Валидация имени
-  if(!name){
-    if(nameHint) nameHint.style.display='block';
-    document.getElementById('ln-'+id).focus();
-    document.getElementById('ln-'+id).style.borderColor='#ef4444';
-    return;
-  } else {
-    if(nameHint) nameHint.style.display='none';
-    document.getElementById('ln-'+id).style.borderColor='';
-  }
   const email=document.getElementById('le-'+id).value.trim();
-  const addr=document.getElementById('la-'+id).value.trim();
-  const contact=document.getElementById('lc-'+id).value;
-  // Округляем цену до 2 знаков — убираем 5632.280000000001
+  const miejscowosc=document.getElementById('la-'+id).value.trim();
+  const kod=document.getElementById('lz-'+id).value.trim();
+  const contactRadios=document.getElementsByName('lc-'+id);
+  let contact='';
+  for(let i=0;i<contactRadios.length;i++){
+    if(contactRadios[i].checked){
+      contact=contactRadios[i].value;
+      break;
+    }
+  }
+  
+  // Валідація
+  const phoneInput=document.getElementById('lp-'+id);
+  const nameInput=document.getElementById('ln-'+id);
+  const emailInput=document.getElementById('le-'+id);
+  const miejscowoscInput=document.getElementById('la-'+id);
+  const kodInput=document.getElementById('lz-'+id);
+  const contactHint=document.getElementById('contact-hint-'+id);
+  
+  let hasErrors=false;
+  
+  // Валідація імені
+  if(!name){
+    const hint=document.getElementById('ln-hint-'+id);
+    nameInput.style.borderColor='#ef4444';
+    nameInput.classList.add('error-shake');
+    if(hint)hint.style.display='block';
+    setTimeout(()=>nameInput.classList.remove('error-shake'),900);
+    hasErrors=true;
+  }
+  
+  // Валідація телефону
+  const phoneDigits=phone.replace(/[^\d]/g,'');
+  if(phoneDigits.length!==11 || !phoneDigits.startsWith('48')){
+    const hint=document.getElementById('lp-hint-'+id);
+    phoneInput.style.borderColor='#ef4444';
+    phoneInput.classList.add('error-shake');
+    if(hint)hint.style.display='block';
+    setTimeout(()=>phoneInput.classList.remove('error-shake'),900);
+    hasErrors=true;
+  }
+  
+  // Валідація email
+  if(!email || !email.includes('@')){
+    const hint=document.getElementById('le-hint-'+id);
+    emailInput.style.borderColor='#ef4444';
+    emailInput.classList.add('error-shake');
+    if(hint)hint.style.display='block';
+    setTimeout(()=>emailInput.classList.remove('error-shake'),900);
+    hasErrors=true;
+  }
+  
+  // Валідація miejscowość
+  if(!miejscowosc){
+    const hint=document.getElementById('la-hint-'+id);
+    miejscowoscInput.style.borderColor='#ef4444';
+    miejscowoscInput.classList.add('error-shake');
+    if(hint)hint.style.display='block';
+    setTimeout(()=>miejscowoscInput.classList.remove('error-shake'),900);
+    hasErrors=true;
+  }
+  
+  // Валідація kod
+  const kodDigits=kod.replace(/[^\d]/g,'');
+  if(kodDigits.length!==5){
+    const hint=document.getElementById('lz-hint-'+id);
+    kodInput.style.borderColor='#ef4444';
+    kodInput.classList.add('error-shake');
+    if(hint)hint.style.display='block';
+    setTimeout(()=>kodInput.classList.remove('error-shake'),900);
+    hasErrors=true;
+  }
+  
+  // Валідація методу контакту
+  if(!contact){
+    if(contactHint){
+      contactHint.style.display='block';
+      contactHint.style.color='#ef4444';
+    }
+    hasErrors=true;
+  } else {
+    if(contactHint){
+      contactHint.style.display='none';
+    }
+  }
+  
+  if(hasErrors){
+    return; // Зупиняємо якщо є помилки
+  }
+  
+  // Формуємо адресу: Miejscowość, Kod
+  const address=miejscowosc+(kod?' ('+kod+')':'');
+  
+  // Округляємо ціну
   const priceClean=Math.round(price*100)/100;
-  // Показываем "спасибо" сразу
+  
+  // Показуємо "дякуємо"
   document.getElementById('lf-'+id).style.display='none';
   document.getElementById('lo-'+id).style.display='block';
-  // Меняем текст и кнопку по каналу
+  
+  // Оновлюємо текст відповіді
   const msgEl=document.getElementById('lo-msg-'+id);
   const btnEl=document.getElementById('lo-btn-'+id);
+  
   if(msgEl){
-    const ch={'msg':'Messenger 💙','wa':'WhatsApp 💚','call':'SMS lub telefon 📞'};
+    const ch={'email':'Email 📧','msg':'Messenger 💙','wa':'WhatsApp 💚','call':'Telefon 📞'};
     const chName=ch[contact]||'wybrany kanał';
-    msgEl.innerHTML='📋 <strong>Przygotujemy pisemną wycenę</strong> Twojego ogrodzenia<br>i wyślemy ją w ciągu <strong>30 minut</strong> na <strong>'+chName+'</strong>.';
+    const timeText=(contact==='email'||contact==='msg')?'30 minut':'24 godzin';
+    msgEl.innerHTML='📋 <strong>Dziękujemy!</strong> Przygotujemy pisemną wycenę<br>i wyślemy ją w ciągu <strong>'+timeText+'</strong> na <strong>'+chName+'</strong>.';
   }
+  
   if(btnEl){
     if(contact==='msg'){
       btnEl.innerHTML='<a href="https://m.me/61586439991801" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#0084FF;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;margin-top:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/></svg>Napisz na Messenger →</a>';
-    } else if(contact==='wa'){
+    }else if(contact==='wa'){
       btnEl.innerHTML='<a href="https://wa.me/48733245757" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;margin-top:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Napisz na WhatsApp →</a>';
-    } else {
+    }else{
       btnEl.innerHTML='<a href="tel:+48733245757" style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--orange);color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;margin-top:10px;">📞 Zadzwoń: +48 733 245 757 →</a>';
     }
   }
-  // Facebook Pixel — отслеживаем лид
+  
+  // Facebook Pixel
   if(typeof fbq!=='undefined'){
     fbq('track','Lead',{
       content_name:product,
@@ -1340,11 +1771,13 @@ function sendLead(id,product,price,items){
       currency:'PLN'
     });
   }
+  
   // Google Analytics GA4
   if(typeof trackGA4Lead!=='undefined'){
-    trackGA4Lead(product, Math.round(price*100)/100);
+    trackGA4Lead(product,Math.round(price*100)/100);
   }
-  // Отправляем данные в Make.com
+  
+  // Відправляємо в Make.com
   fetch('https://hook.eu1.make.com/5a867aeh816mh19jc65f2mjxiajmhrnn',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -1352,12 +1785,15 @@ function sendLead(id,product,price,items){
       phone:phone,
       name:name,
       email:email,
-      address:addr,
+      address:address,
+      miejscowosc:miejscowosc,
+      kod_pocztowy:kod,
       contact_method:contact,
       product:product,
       price:priceClean,
       price_formatted:priceClean.toFixed(2)+' zł',
       items:items,
+      psid:getPSID(),
       source:'kalkulator_stalsystem',
       date:new Date().toISOString(),
       ...getUTM()
@@ -1431,6 +1867,33 @@ function calcOg(){
     ...(lndC>0?[{name:'Krajobraz',qty:len,unit:'mb',price_unit:lnd,total:Math.round(lndC*100)/100}]:[]),
     ...(ledC>0?[{name:'LED',qty:len,unit:'mb',price_unit:led,total:Math.round(ledC*100)/100}]:[])
   ]));
+  // ═══════════════════════════════════════════════════════════
+    // PAWEŁ TRACKING — ogrodzenie
+    // ═══════════════════════════════════════════════════════════
+    window.calculatorData = {
+      product: 'ogrodzenie',
+      product_pl: 'Ogrodzenie 3D',
+      length: len,
+      height: h,
+      mode: mod,
+      mode_text: mod === 'full' ? 'montaż + materiał' : 'tylko materiał',
+      price: Math.round(total),
+      timestamp: new Date().toISOString()
+    };
+    
+    // Uruchom Pawła (po 5 sekundach)
+    if (!window.pawelLaunched) {
+      setTimeout(() => {
+        if (window.voiceflow && !window.pawelLaunched) {
+          window.pawelLaunched = true;
+          window.voiceflow.chat.open();
+          window.voiceflow.chat.interact({
+            type: 'launch',
+            payload: window.calculatorData
+          });
+        }
+      }, 5000);
+    }
 }
 function calcDl(){
   const h=parseFloat(gv('dl-h'));const len=Math.min(500,Math.max(5,parseFloat(gv('dl-len'))||20));
@@ -1467,6 +1930,35 @@ function calcBr(){
     ...(instP>0?[{name:'Montaż',qty:1,unit:'kpl',price_unit:instP,total:instP}]:[]),
     ...(auto>0?[{name:'Automatyka',qty:1,unit:'kpl',price_unit:auto,total:auto}]:[])
   ]));
+  // ═══════════════════════════════════════════════════════════
+    // PAWEŁ TRACKING — brama
+    // ═══════════════════════════════════════════════════════════
+    window.calculatorData = {
+      product: 'brama',
+      product_pl: tN[type],
+      width: w,
+      height: h,
+      type: type,
+      type_text: tN[type],
+      mode: mont,
+      mode_text: mN[mont],
+      auto: auto > 0,
+      price: Math.round(total),
+      timestamp: new Date().toISOString()
+    };
+    
+    if (!window.pawelLaunched) {
+      setTimeout(() => {
+        if (window.voiceflow && !window.pawelLaunched) {
+          window.pawelLaunched = true;
+          window.voiceflow.chat.open();
+          window.voiceflow.chat.interact({
+            type: 'launch',
+            payload: window.calculatorData
+          });
+        }
+      }, 5000);
+    }
 }
 function calcFu(){
   const type=gv('fu-type');const h=gv('fu-size');
@@ -1482,6 +1974,33 @@ function calcFu(){
     {name:`Furtka ${tN[type]} ${h}m`,qty:qty,unit:'szt',price_unit:Math.round(matP*100)/100,total:Math.round(matP*qty*100)/100},
     ...(mont>0?[{name:'Montaż',qty:qty,unit:'szt',price_unit:mont,total:mont*qty}]:[])
   ]));
+  // ═══════════════════════════════════════════════════════════
+    // PAWEŁ TRACKING — furtka
+    // ═══════════════════════════════════════════════════════════
+    window.calculatorData = {
+      product: 'furtka',
+      product_pl: tN[type],
+      height: h,
+      type: type,
+      type_text: tN[type],
+      qty: qty,
+      montaz: mont > 0,
+      price: Math.round(total),
+      timestamp: new Date().toISOString()
+    };
+    
+    if (!window.pawelLaunched) {
+      setTimeout(() => {
+        if (window.voiceflow && !window.pawelLaunched) {
+          window.pawelLaunched = true;
+          window.voiceflow.chat.open();
+          window.voiceflow.chat.interact({
+            type: 'launch',
+            payload: window.calculatorData
+          });
+        }
+      }, 5000);
+    }
 }
 function calcWi(){
   const sqmVal=gv('wi-sqm');
@@ -1499,12 +2018,38 @@ function calcWi(){
     {name:`Wiata stalowa ${sqm}m²`,qty:sqm,unit:'m²',price_unit:perSqm*WI_M,total:Math.round(wC*100)/100},
     ...(gate?[{name:'Brama przesuwna 4m',qty:1,unit:'kpl',price_unit:Math.round(gC*100)/100,total:Math.round(gC*100)/100}]:[])
   ]));
+  // ═══════════════════════════════════════════════════════════
+    // PAWEŁ TRACKING — wiata
+    // ═══════════════════════════════════════════════════════════
+    window.calculatorData = {
+      product: 'wiata',
+      product_pl: 'Wiata stalowa',
+      area: sqm,
+      mode: mod,
+      mode_text: mL,
+      gate: gate,
+      price: Math.round(total),
+      timestamp: new Date().toISOString()
+    };
+    
+    if (!window.pawelLaunched) {
+      setTimeout(() => {
+        if (window.voiceflow && !window.pawelLaunched) {
+          window.pawelLaunched = true;
+          window.voiceflow.chat.open();
+          window.voiceflow.chat.interact({
+            type: 'launch',
+            payload: window.calculatorData
+          });
+        }
+      }, 5000);
+    }
 }
 
 // FAQ
 const FAQS=[
   ['Czy cena z kalkulatora jest ostateczna?','Nie — to wycena orientacyjna. Finalna cena po bezpłatnym pomiarze, często bywa niższa po optymalizacji projektu.'],
-  ['Ile kosztuje pomiar? Czy jest bezpłatny?','Pomiar kosztuje 200–300 zł. Ale ta kwota jest w całości odliczana od kwoty Twojego zamówienia. Przy realizacji wychodzi gratis.'],
+  ['Ile kosztuje pomiar? Czy jest bezpłatny?','Pomiar jest GRATIS — wliczony w koszt zamówienia. Formalnie kosztuje 200–300 zł, ale ta kwota jest w całości odliczana od wartości Twojego zamówienia. Przy realizacji wychodzi na zero.'],
   ['Jaka jest gwarancja na materiały i montaż?','Materiały: 12 lat. Montaż: 2 lata. Stal ocynkowana + RAL, odporna na korozję.'],
   ['Jak długo trwa realizacja?','Produkcja i dostawa: 7–14 dni roboczych. Montaż: 7–14 dni od dostawy.'],
   ['Czy jesteście wiarygodną firmą? Jak mogę sprawdzić?','Tak — działamy jako zarejestrowana jednoosobowa działalność gospodarcza w Polsce. Nasze biuro mieści się w Środzie Wielkopolskiej (ul. Prandzeskiego 23). Możesz nas sprawdzić na Facebooku: <a href="https://www.facebook.com/profile.php?id=61586439991801" target="_blank" style="color:var(--orange)">StalSystem Polska</a>. Każde zamówienie realizujemy na podstawie pisemnej umowy — żadnych płatności bez dokumentu.'],
@@ -1515,6 +2060,7 @@ const FAQS=[
   ['Z jakich materiałów korzystacie?','Wyłącznie stal ocynkowana + powłoka proszkowa RAL. Kolory: RAL 7016 (antracyt), RAL 6005 (zieleń).'],
   ['Jakie kolory są dostępne?','Standardowo oferujemy dwa kolory: <strong>Grafit — RAL 7016</strong> (ciemnoszary, bardzo popularny) oraz <strong>Zieleń — RAL 6005</strong> (butelkowa zieleń, klasyczny wybór do ogrodów). Inne kolory RAL dostępne są <strong>na indywidualne zamówienie</strong> — zapytaj nas o swój kolor podczas bezpłatnego pomiaru.'],
   ['Czy mogę zamówić tylko materiał?','Tak. W kalkulatorze wybierz "Tylko materiał". Wysyłamy do całej Polski.'],
+  ['Czy są jakieś dodatki gratis do zamówienia?','Tak! Do każdego zamówienia dodajemy <strong style="color:var(--orange)">elegancką tabliczkę adresową na ogrodzenie — całkowicie bezpłatnie</strong>. Tabliczka z numerem domu to gotowy produkt o wartości <strong>150 zł</strong>, który normalnie kupuje się osobno. U nas dostaje ją każdy klient przy realizacji zamówienia — bez żadnych warunków. Po prostu miły bonus na start 🎁'],
   ['Jak się z wami skontaktować?','Messenger lub WhatsApp: najszybciej — odpiszemy w 30 min. Tel: +48 733 245 757. Email: 733245757a@gmail.com. Pn–pt 8–18, sob 9–14.']
 ];
 const faqEl=document.getElementById('faq');
@@ -1553,7 +2099,138 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 buildBr();
 buildFu();
 
+// ═══════════════════════════════════════
+// НОВІ КАЛЬКУЛЯТОРИ: KOSTKA, GABIONY, WIDEODOMOFON
+// ═══════════════════════════════════════
+
+function calcKB(){
+  const sqm=parseFloat(document.getElementById('kb-sqm').value)||30;
+  if(sqm<5){alert('⚠️ Minimalna powierzchnia: 5 m²');document.getElementById('kb-sqm').value=5;return;}
+  const mat=parseFloat(gv('kb-mat'))||60;
+  const rob=parseFloat(gv('kb-rob'))||103;
+  const total=(mat+rob)*sqm;
+  const matTotal=mat*sqm;const robTotal=rob*sqm;
+  let rows=br(`Materiał kostki — ${mat} zł/m² × ${sqm}m²`,matTotal);
+  rows+=br(`Układanie z fugami — ${rob} zł/m² × ${sqm}m²`,robTotal);
+  rows+=brt(total);
+  showRes('kb',pbox(`Kostka brukowa · Materiał + Układanie`,total,`${sqm} m² · ~${fmt(total/sqm)} zł/m² · dostawa osobno`)
+    +ntc('Cena orientacyjna — NIE ZAWIERA przygotowania podbudowy (piasek, krawężniki). Dokładna wycena po pomiarze.')
+    +bkdn(rows)+leadHTML(`Kostka brukowa ${sqm}m²`,total,[
+    {name:'Materiał kostki',qty:sqm,unit:'m²',price_unit:mat,total:Math.round(matTotal*100)/100},
+    {name:'Układanie z fugami',qty:sqm,unit:'m²',price_unit:rob,total:Math.round(robTotal*100)/100}
+  ]));
+}
+
+function calcGB(){
+  const mb=parseFloat(document.getElementById('gb-mb').value)||20;
+  if(mb<10){alert('⚠️ Minimalna długość: 10 mb');document.getElementById('gb-mb').value=10;return;}
+  const siatka=parseFloat(gv('gb-siatka'))||80;
+  const kamien=parseFloat(gv('gb-kamien'))||50;
+  
+  // Об'єм каменю залежить від висоти (80=1.0m, 130=1.5m, 200=2.0m)
+  const height = siatka===80?1.0 : siatka===130?1.5 : 2.0;
+  const kamienM3perMB = height * 0.5; // висота × 0.5м глибина
+  const kamienMb = kamien * kamienM3perMB;
+  
+  const total=(siatka+kamienMb)*mb;
+  const siatkaTotal=siatka*mb;
+  const kamienTotal=kamienMb*mb;
+  const kamienM3total = kamienM3perMB * mb;
+  
+  let rows=br(`Siatka gabionowa ${height}m — ${siatka} zł/mb × ${mb}mb`,siatkaTotal);
+  rows+=br(`Kamień (${kamienM3perMB}m³/mb) — ${kamien} zł/m³ × ${fmt(kamienM3total)}m³`,kamienTotal);
+  rows+=brt(total);
+  showRes('gb',pbox(`Gabiony · Siatka + Kamień + Montaż`,total,`${mb} mb · ~${fmt(total/mb)} zł/mb · dostawa osobno`)
+    +ntc('Cena zawiera siatką, kamień i montaż. Dokładna wycena po pomiarze. Dostawa liczona osobno.')
+    +bkdn(rows)+leadHTML(`Gabiony ${mb}mb`,total,[
+    {name:`Siatka gabionowa ${height}m`,qty:mb,unit:'mb',price_unit:siatka,total:Math.round(siatkaTotal*100)/100},
+    {name:'Kamień',qty:kamienM3total,unit:'m³',price_unit:kamien,total:Math.round(kamienTotal*100)/100}
+  ]));
+}
+
+function calcWD(){
+  const typ=parseFloat(gv('wd-typ'))||4500;
+  const extra=parseFloat(gv('wd-extra'))||0;
+  const total=typ+extra;
+  let rows=br('Wideodomofon z montażem',typ);
+  if(extra>0)rows+=br('Dodatkowe opcje',extra);
+  rows+=brt(total);
+  showRes('wd',pbox(`Wideodomofon · Sprzęt + Montaż + Konfiguracja`,total,`Komplet · gotowy do użycia`)
+    +ntc('Cena zawiera sprzęt, montaż, konfigurację i instruktaż. Gwarancja 24 miesiące.')
+    +bkdn(rows)+leadHTML('Wideodomofon',total,[
+    {name:'Wideodomofon z montażem',qty:1,unit:'kpl',price_unit:typ,total:typ},
+    ...(extra>0?[{name:'Dodatkowe opcje',qty:1,unit:'kpl',price_unit:extra,total:extra}]:[])
+  ]));
+}
+
+// Калькулятори запускаються автоматично при переключенні вкладки через switchProd()
+// Ініціалізація не потрібна — елементи з'являються динамічно
+
 // месяц убран — используется "w tym miesiącu"
+</script>
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FACEBOOK MESSENGER CHAT PLUGIN — dla iOS + Android PSID -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="fb-root"></div>
+<div id="fb-customer-chat" class="fb-customerchat"></div>
+
+<script>
+  var chatbox = document.getElementById('fb-customer-chat');
+  chatbox.setAttribute("page_id", "61586439991801"); // StalSystem Polska Page ID
+  chatbox.setAttribute("attribution", "biz_inbox");
+  chatbox.setAttribute("greeting_dialog_display", "hide"); // Ukryj auto-popup
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml: true,
+      version: 'v21.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/pl_PL/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PAWEŁ — Wirtualny Doradca StalSystem Polska -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script type="text/javascript">
+  (function(d, t) {
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function() {
+      window.voiceflow.chat.load({
+        verify: { 
+          projectID: '69ea3631bd1beab14fcfb012' // ← Project ID z Voiceflow (StalSystem Paweł)
+        },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production',
+        
+        // Wygląd okienka
+        assistant: {
+          title: "Paweł — Doradca StalSystem",
+          description: "Pomogę Ci wybrać najlepszą opcję 🙂",
+          image: "https://cdn.jsdelivr.net/gh/5605131a-tech/stalsystem-photos@main/logo.png",
+          color: "#ff6b35" // Pomarańczowy (z brandingu)
+        },
+        
+        // Przycisk uruchamiający
+        launcher: {
+          text: "Potrzebujesz pomocy? 👋"
+        },
+        
+        // WAŻNE: NIE otwieraj od razu (czeka na kalkulator)
+        autostart: false
+      });
+    }
+    v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; 
+    v.type = "text/javascript"; 
+    s.parentNode.insertBefore(v, s);
+  })(document, 'script');
 </script>
 </body>
 </html>
