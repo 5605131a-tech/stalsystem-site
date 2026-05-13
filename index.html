@@ -54,42 +54,28 @@ body{
 ::-webkit-scrollbar-thumb{background:var(--orange);border-radius:3px}
 
 /* ══════════════════════════════
-   STICKY BOTTOM BAR — главный конверсионный инструмент на мобиле
+   STICKY BOTTOM BAR — только кнопка звонка
    ══════════════════════════════ */
 .sticky-bar{
   position:fixed;bottom:0;left:0;right:0;z-index:999;
   background:rgba(13,31,60,0.97);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-top:1px solid rgba(255,255,255,0.1);
-  padding:10px 12px;
-  display:flex;gap:8px;
+  padding:12px 16px;
   box-shadow:0 -4px 24px rgba(13,31,60,0.35);
 }
 .sb-call{
-  flex:1.4;
+  width:100%;
   background:linear-gradient(135deg,var(--orange),var(--od));
   color:#fff;text-decoration:none;
   border-radius:var(--radius-btn);
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  font-family:'Nunito',sans-serif;font-weight:900;font-size:0.95rem;
-  padding:12px 8px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;
+  padding:16px;
   box-shadow:0 4px 14px rgba(255,107,53,0.4);
   transition:all .18s;
 }
 .sb-call:active{transform:scale(.97)}
-.sb-icon{
-  flex:1;
-  background:rgba(255,255,255,0.1);
-  border:1.5px solid rgba(255,255,255,0.2);
-  color:#fff;text-decoration:none;
-  border-radius:var(--radius-btn);
-  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;
-  font-family:'Nunito',sans-serif;font-weight:700;font-size:0.64rem;
-  padding:8px 4px;transition:all .18s;
-}
-.sb-icon .si{font-size:1.3rem;display:block;line-height:1}
-.sb-icon:active{background:rgba(255,255,255,0.2)}
-/* wa/ms цвета теперь inline */
 
 /* ── NAV ── */
 .nav{
@@ -804,20 +790,8 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
      80% клиентов видят это в первый момент
      ══════════════════════════════ -->
 <div class="sticky-bar">
-  <!-- Email -->
-  <a href="mailto:biuro.stalsystem.pl@gmail.com" class="sb-icon" style="border:none;background:#EA4335;">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-    <span style="font-size:0.6rem;font-weight:800;color:#fff;margin-top:2px">E-mail</span>
-  </a>
-  <!-- Messenger — GŁÓWNY -->
-  <a href="https://m.me/61586439991801" target="_blank" class="sb-icon" style="border:none;background:#0084FF;flex:1.2;">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/></svg>
-    <span style="font-size:0.62rem;font-weight:800;color:#fff;margin-top:2px">Messenger</span>
-  </a>
-  <!-- WhatsApp -->
-  <a href="https://wa.me/48733245757" target="_blank" class="sb-icon" style="border:none;background:#25D366;">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <span style="font-size:0.62rem;font-weight:800;color:#fff;margin-top:2px">WhatsApp</span>
+  <a href="tel:+48733245757" class="sb-call">
+    📞 ZADZWOŃ: +48 733 245 757
   </a>
 </div>
 
@@ -1301,15 +1275,20 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
 <!-- CTA -->
 <div class="cta reveal">
   <h2>Gotowy na bezpłatną wycenę?</h2>
-  <p>Napisz lub zadzwoń — odpisujemy w 30 minut</p>
+  <p>📱 Krótka wycena SMS w 15 minut · 📧 Pełny PDF na email w 30 minut</p>
   <div class="cta-btns">
-    <a href="https://m.me/61586439991801" target="_blank" class="ctabtn" style="background:#0084FF;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 14px rgba(0,132,255,0.4);">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/></svg>
-  Napisz na Messenger
+    <a href="mailto:biuro.stalsystem.pl@gmail.com" class="ctabtn" style="background:#EA4335;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 14px rgba(234,67,53,0.4);">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+  Napisz na email
 </a>
     <a href="tel:+48733245757" class="ctabtn sec2">📞 733 245 757</a>
   </div>
-  <div class="ctanote">pn–pt 8:00–18:00 · sob 9:00–14:00<br>✉️ biuro.stalsystem.pl@gmail.com</div>
+  <div class="ctanote">
+    <strong>Godziny pracy:</strong><br>
+    Poniedziałek–Piątek: 8:00–18:00<br>
+    Sobota: 9:00–14:00<br>
+    Niedziela: Nieczynne
+  </div>
 </div>
 
 <div style="padding:0 16px 8px;font-size:0.7rem;color:#94a3b8;line-height:1.8;">
@@ -1434,7 +1413,13 @@ function leadHTML(label,total,items){
   return`<div class="lead">
   <div class="lfomo">⏰ Najbliższe terminy: <strong>7–10 dni</strong> · Zostały <strong>2 miejsca</strong> w tym miesiącu</div>
   <h3>📋 Chcesz dokładną cenę?</h3>
-  <p>To wycena <strong>orientacyjna</strong>. Po bezpłatnym pomiarze może być <strong>niższa o 10%</strong>.<br>Przy zamówieniu 3 elementów — <strong>rabat 10% na montaż</strong>. Odpisujemy w 30 minut — bez zobowiązań.</p>
+  <p style="line-height:1.6">
+    <strong style="font-size:1.05em;color:#fff">📱 Krótką wycenę SMS — w 15 minut</strong><br>
+    <span style="font-size:0.92em;opacity:0.8">Podstawowe informacje + cena orientacyjna</span><br><br>
+    <strong style="font-size:1.05em;color:#fff">📧 Pełny kosztorys PDF na email — w 30 minut</strong><br>
+    <span style="font-size:0.92em;opacity:0.8">Szczegółowa oferta z opisem materiałów + gwarancja + wizualizacja</span><br><br>
+    <span style="opacity:0.75">Przy zamówieniu 3 elementów — <strong>rabat 10% na montaż</strong>. Odpisujemy bez zobowiązań.</span>
+  </p>
   <div class="lbens">
     <div class="lben">📐 Bezpłatny pomiar*</div>
     <div class="lben">💰 Powiemy gdzie zaoszczędzić</div>
@@ -1467,7 +1452,7 @@ function leadHTML(label,total,items){
     <input class="linp" type="text" id="ln-${id}" placeholder="👤 Imię i nazwisko *" required>
     <div class="field-hint" id="ln-hint-${id}">⚠️ Podaj swoje imię</div>
     
-    <div style="font-size:0.82rem;font-weight:700;margin-bottom:6px;margin-top:12px;color:#fff">📱 Telefon (Facebook Messenger)</div>
+    <div style="font-size:0.82rem;font-weight:700;margin-bottom:6px;margin-top:12px;color:#fff">📱 Telefon *</div>
     <input class="linp" type="tel" id="lp-${id}" 
       placeholder="+48 123 456 789" 
       maxlength="15"
@@ -1475,7 +1460,7 @@ function leadHTML(label,total,items){
       onblur="validatePhone(this,'${id}')"
       style="letter-spacing:1px"
       required>
-    <div style="font-size:0.74rem;color:rgba(255,255,255,0.55);margin-top:5px;display:flex;align-items:center;gap:5px;">💬 Wyślemy szczegółową ofertę na Messenger w 30 minut</div>
+    <div style="font-size:0.74rem;color:rgba(255,255,255,0.55);margin-top:5px;display:flex;align-items:center;gap:5px;">💬 Krótką wycenę SMS otrzymasz w 15 minut</div>
     <div class="field-hint" id="lp-hint-${id}">⚠️ Podaj numer w formacie: +48 123 456 789</div>
     
     <input class="linp" type="email" id="le-${id}" placeholder="✉️ Email *" required>
@@ -1502,56 +1487,7 @@ function leadHTML(label,total,items){
       <div style="font-size:0.74rem;color:rgba(255,255,255,0.5);margin-top:6px;display:flex;align-items:center;gap:5px">ℹ️ Odpowiemy na Twoje pytania w ofercie PDF</div>
     </div>
     
-    <div style="font-size:0.82rem;font-weight:700;margin-bottom:8px;margin-top:12px;color:#fff">📲 Jak chcesz otrzymać ofertę PDF?</div>
-    <div class="contact-grid" id="contact-grid-${id}">
-      <label class="contact-card" data-method="msg" style="border:2px solid #0084FF;background:rgba(0,132,255,0.08);">
-        <input type="radio" name="lc-${id}" value="msg" onchange="toggleEmailRequired('${id}',this.value)" checked>
-        <div class="contact-card-content">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/></svg>
-          <div class="contact-card-text">
-            <div class="contact-card-title" style="color:#0084FF;">Messenger</div>
-            <div class="contact-card-time">Najszybszy · PDF w 30 minut</div>
-          </div>
-        </div>
-      </label>
-      
-      <label class="contact-card" data-method="email">
-        <input type="radio" name="lc-${id}" value="email" onchange="toggleEmailRequired('${id}',this.value)">
-        <div class="contact-card-content">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-          <div class="contact-card-text">
-            <div class="contact-card-title">Email</div>
-            <div class="contact-card-time">PDF w ciągu 30 minut</div>
-          </div>
-        </div>
-      </label>
-      
-      <label class="contact-card" data-method="wa">
-        <input type="radio" name="lc-${id}" value="wa" onchange="toggleEmailRequired('${id}',this.value)">
-        <div class="contact-card-content">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <div class="contact-card-text">
-            <div class="contact-card-title">WhatsApp</div>
-            <div class="contact-card-time">Kontakt w ciągu 24h</div>
-          </div>
-        </div>
-      </label>
-      
-      <label class="contact-card" data-method="call">
-        <input type="radio" name="lc-${id}" value="call" onchange="toggleEmailRequired('${id}',this.value)">
-        <div class="contact-card-content">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <div class="contact-card-text">
-            <div class="contact-card-title">Telefon</div>
-            <div class="contact-card-time">Oddzwonimy lub odpiszemy SMS w ciągu 24h</div>
-          </div>
-        </div>
-      </label>
-    </div>
-    
-    <div class="field-hint" id="contact-hint-${id}" style="margin-top:8px">⚠️ Wybierz sposób kontaktu</div>
-    
-    <button class="blead" id="submit-${id}" style="margin-top:12px" onclick="sendLead('${id}','${label.replace(/'/g,"\\'")}',${total})">
+    <button class="blead" id="submit-${id}" style="margin-top:16px" onclick="sendLead('${id}','${label.replace(/'/g,"\\'")}',${total})">
       📩 Wyślij formularz →
     </button>
   </div>
@@ -1559,7 +1495,8 @@ function leadHTML(label,total,items){
     <div class="big">🎉</div>
     <h4>Dziękujemy!</h4>
     <div id="lo-msg-${id}" style="margin-top:6px;font-size:0.82rem;color:#475569;line-height:1.6;text-align:center;">
-      📋 Wycenę wyślemy w ciągu <strong>30 minut</strong>
+      📱 Krótką wycenę SMS dostaniesz w <strong>15 minut</strong><br>
+      📧 Pełny kosztorys PDF na email w <strong>30 minut</strong>
     </div>
     <div id="lo-btn-${id}"></div>
   </div>
@@ -1668,14 +1605,6 @@ function sendLead(id,product,price,items){
   const email=document.getElementById('le-'+id).value.trim();
   const miejscowosc=document.getElementById('la-'+id).value.trim();
   const kod=document.getElementById('lz-'+id).value.trim();
-  const contactRadios=document.getElementsByName('lc-'+id);
-  let contact='';
-  for(let i=0;i<contactRadios.length;i++){
-    if(contactRadios[i].checked){
-      contact=contactRadios[i].value;
-      break;
-    }
-  }
   
   // Валідація
   const phoneInput=document.getElementById('lp-'+id);
@@ -1683,7 +1612,6 @@ function sendLead(id,product,price,items){
   const emailInput=document.getElementById('le-'+id);
   const miejscowoscInput=document.getElementById('la-'+id);
   const kodInput=document.getElementById('lz-'+id);
-  const contactHint=document.getElementById('contact-hint-'+id);
   
   let hasErrors=false;
   
@@ -1700,7 +1628,7 @@ function sendLead(id,product,price,items){
   // Валідація телефону
   const phoneDigits=phone.replace(/[^\d]/g,'');
   if(phoneDigits.length!==11 || !phoneDigits.startsWith('48')){
-    const hint=document.getElementById('lp-hint-'+id);
+    const hint=document.getElementById('lp-'+id);
     phoneInput.style.borderColor='#ef4444';
     phoneInput.classList.add('error-shake');
     if(hint)hint.style.display='block';
@@ -1739,19 +1667,6 @@ function sendLead(id,product,price,items){
     hasErrors=true;
   }
   
-  // Валідація методу контакту
-  if(!contact){
-    if(contactHint){
-      contactHint.style.display='block';
-      contactHint.style.color='#ef4444';
-    }
-    hasErrors=true;
-  } else {
-    if(contactHint){
-      contactHint.style.display='none';
-    }
-  }
-  
   if(hasErrors){
     return; // Зупиняємо якщо є помилки
   }
@@ -1765,27 +1680,6 @@ function sendLead(id,product,price,items){
   // Показуємо "дякуємо"
   document.getElementById('lf-'+id).style.display='none';
   document.getElementById('lo-'+id).style.display='block';
-  
-  // Оновлюємо текст відповіді
-  const msgEl=document.getElementById('lo-msg-'+id);
-  const btnEl=document.getElementById('lo-btn-'+id);
-  
-  if(msgEl){
-    const ch={'email':'Email 📧','msg':'Messenger 💙','wa':'WhatsApp 💚','call':'Telefon 📞'};
-    const chName=ch[contact]||'wybrany kanał';
-    const timeText=(contact==='email'||contact==='msg')?'30 minut':'24 godzin';
-    msgEl.innerHTML='📋 <strong>Dziękujemy!</strong> Przygotujemy pisemną wycenę<br>i wyślemy ją w ciągu <strong>'+timeText+'</strong> na <strong>'+chName+'</strong>.';
-  }
-  
-  if(btnEl){
-    if(contact==='msg'){
-      btnEl.innerHTML='<a href="https://m.me/61586439991801" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#0084FF;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;margin-top:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/></svg>Napisz na Messenger →</a>';
-    }else if(contact==='wa'){
-      btnEl.innerHTML='<a href="https://wa.me/48733245757" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;margin-top:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Napisz na WhatsApp →</a>';
-    }else{
-      btnEl.innerHTML='<a href="tel:+48733245757" style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--orange);color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:800;font-size:0.88rem;margin-top:10px;">📞 Zadzwoń: +48 733 245 757 →</a>';
-    }
-  }
   
   // Facebook Pixel
   if(typeof fbq!=='undefined'){
@@ -1804,7 +1698,7 @@ function sendLead(id,product,price,items){
   // Відправляємо в Make.com
   const notes=document.getElementById('lnotes-'+id)?document.getElementById('lnotes-'+id).value.trim():'';
   
-  fetch('/api/webhook',{
+  fetch('https://hook.eu1.make.com/qjojq8dj8ppdj5thinkyd5dbds17ksuc',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
@@ -1814,14 +1708,12 @@ function sendLead(id,product,price,items){
       address:address,
       miejscowosc:miejscowosc,
       kod_pocztowy:kod,
-      contact_method:contact,
       product:product,
       price:priceClean,
       price_formatted:priceClean.toFixed(2)+' zł',
       items:items,
       notes:notes,
-      psid:getPSID(),
-      source:'kalkulator_stalsystem_v4',
+      source:'stalsystem_website',
       date:new Date().toISOString(),
       ...getUTM()
     })
@@ -2149,33 +2041,6 @@ function calcWD(){
 // Ініціалізація не потрібна — елементи з'являються динамічно
 
 // месяц убран — используется "w tym miesiącu"
-</script>
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- FACEBOOK MESSENGER CHAT PLUGIN — dla iOS + Android PSID -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<div id="fb-root"></div>
-<div id="fb-customer-chat" class="fb-customerchat"></div>
-
-<script>
-  var chatbox = document.getElementById('fb-customer-chat');
-  chatbox.setAttribute("page_id", "61586439991801"); // StalSystem Polska Page ID
-  chatbox.setAttribute("attribution", "biz_inbox");
-  chatbox.setAttribute("greeting_dialog_display", "hide"); // Ukryj auto-popup
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      xfbml: true,
-      version: 'v21.0'
-    });
-  };
-
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/pl_PL/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
 </script>
 
 </body>
