@@ -7,6 +7,7 @@
 <meta name="description" content="Ogrodzenia 3D, bramy przesuwne, furtki i wiaty stalowe w Środzie Wielkopolskiej i całej Wielkopolsce. Oblicz cenę online. Montaż 1-2 dni. Gwarancja 12 lat. Napisz: +48 733 245 757">
 <meta name="keywords" content="ogrodzenia Środa Wielkopolska, ogrodzenia Wielkopolska, ogrodzenia 3D Poznań, bramy przesuwne Wielkopolska, montaż ogrodzeń Wielkopolska, StalSystem Polska">
 <meta name="robots" content="index, follow">
+<meta name="google-site-verification" content="IAbnCo8YIPQp6VvJNICZCv4QI4-XG_X-4VkAZfXvDVk" />
 <link rel="canonical" href="https://stalsystem.pl">
 <link rel="alternate" hreflang="pl" href="https://stalsystem.pl">
 <link rel="alternate" hreflang="x-default" href="https://stalsystem.pl">
@@ -21,6 +22,84 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1013461709182103');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1013461709182103&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B9QH1CPDDS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-B9QH1CPDDS');
+</script>
+
+<!-- Schema.org LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "StalSystem Polska",
+  "image": "https://cdn.jsdelivr.net/gh/5605131a-tech/stalsystem-photos@main/hero.png",
+  "telephone": "+48733245757",
+  "email": "biuro.stalsystem.pl@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Prandzeskiego 23",
+    "addressLocality": "Środa Wielkopolska",
+    "addressRegion": "Wielkopolskie",
+    "postalCode": "63-000",
+    "addressCountry": "PL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "52.2297",
+    "longitude": "17.2750"
+  },
+  "url": "https://stalsystem.pl",
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "52.2297",
+      "longitude": "17.2750"
+    },
+    "geoRadius": "100000"
+  }
+}
+</script>
+
 <style>
 :root{
   --navy:#0d1f3c;
@@ -770,17 +849,6 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
   }
 }
 </script>
-<!-- Google Analytics GA4 — замени G-XXXXXXXXXX на свой ID с analytics.google.com -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js',new Date());
-  gtag('config','G-XXXXXXXXXX');
-  function trackGA4Lead(product,price){
-    gtag('event','generate_lead',{currency:'PLN',value:price,items:[{item_name:product}]});
-  }
-</script>
 </head>
 <body>
 
@@ -790,8 +858,8 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
      80% клиентов видят это в первый момент
      ══════════════════════════════ -->
 <div class="sticky-bar">
-  <a href="tel:+48733245757" class="sb-call">
-    📞 ZADZWOŃ: +48 733 245 757
+  <a href="sms:+48733245757" class="sb-call" onclick="if(typeof fbq!=='undefined')fbq('track','Contact');if(typeof gtag!=='undefined')gtag('event','sms_click',{method:'sticky'});">
+    💬 NAPISZ: +48 733 245 757
   </a>
 </div>
 
@@ -845,7 +913,7 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
       </div>
     </div>
   </div>
-  <a href="tel:+48733245757" class="nav-phone">📞 733 245 757</a>
+  <a href="tel:+48733245757" class="nav-phone" onclick="if(typeof fbq!=='undefined')fbq('track','Contact');if(typeof gtag!=='undefined')gtag('event','phone_call',{method:'nav'});">📞 733 245 757</a>
 </nav>
 
 <!-- ── ORANGE TRUST BAR ── -->
@@ -1800,6 +1868,24 @@ function calcOg(){
       timestamp: new Date().toISOString()
     };
     
+    // Facebook Pixel — Calculator Lead
+    if(typeof fbq !== 'undefined'){
+      fbq('track', 'Lead', {
+        content_name: 'Ogrodzenie 3D',
+        value: Math.round(total),
+        currency: 'PLN'
+      });
+    }
+    
+    // Google Analytics — Lead Event
+    if(typeof gtag !== 'undefined'){
+      gtag('event', 'generate_lead', {
+        currency: 'PLN',
+        value: Math.round(total),
+        content_name: 'Ogrodzenie 3D'
+      });
+    }
+    
     // VoiceFlow bot removed (not configured)
 }
 function calcDl(){
@@ -1853,6 +1939,24 @@ function calcBr(){
       price: Math.round(total),
       timestamp: new Date().toISOString()
     };
+    
+    // Facebook Pixel — Calculator Lead
+    if(typeof fbq !== 'undefined'){
+      fbq('track', 'Lead', {
+        content_name: tN[type],
+        value: Math.round(total),
+        currency: 'PLN'
+      });
+    }
+    
+    // Google Analytics — Lead Event
+    if(typeof gtag !== 'undefined'){
+      gtag('event', 'generate_lead', {
+        currency: 'PLN',
+        value: Math.round(total),
+        content_name: tN[type]
+      });
+    }
     
     // VoiceFlow bot removed (not configured)
 }
@@ -1916,6 +2020,24 @@ function calcWi(){
       price: Math.round(total),
       timestamp: new Date().toISOString()
     };
+    
+    // Facebook Pixel — Calculator Lead
+    if(typeof fbq !== 'undefined'){
+      fbq('track', 'Lead', {
+        content_name: 'Wiata stalowa',
+        value: Math.round(total),
+        currency: 'PLN'
+      });
+    }
+    
+    // Google Analytics — Lead Event
+    if(typeof gtag !== 'undefined'){
+      gtag('event', 'generate_lead', {
+        currency: 'PLN',
+        value: Math.round(total),
+        content_name: 'Wiata stalowa'
+      });
+    }
     
     // VoiceFlow bot removed (not configured)
 }
