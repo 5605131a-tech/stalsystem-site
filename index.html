@@ -1555,7 +1555,7 @@ function leadHTML(label,total,items){
       <div style="font-size:0.74rem;color:rgba(255,255,255,0.5);margin-top:6px;display:flex;align-items:center;gap:5px">ℹ️ Odpowiemy na Twoje pytania w ofercie PDF</div>
     </div>
     
-    <button class="blead" id="submit-${id}" style="margin-top:16px" onclick="sendLead('${id}','${label.replace(/'/g,"\\'")}',${total})">
+    <button class="blead" id="submit-${id}" style="margin-top:16px" onclick="sendLead('${id}','${label.replace(/'/g,"\\'")}',${total},_leadItems['${id}'])">
       📩 Wyślij formularz →
     </button>
   </div>
@@ -1780,6 +1780,8 @@ function sendLead(id,product,price,items){
       price:priceClean,
       price_formatted:priceClean.toFixed(2)+' zł',
       items:items,
+      items_json:JSON.stringify(items),
+      items_text:items.map(i=>`${i.name}: ${i.qty} ${i.unit} × ${i.price_unit} zł = ${i.total} zł`).join('\n'),
       notes:notes,
       source:'stalsystem_website',
       date:new Date().toISOString(),
