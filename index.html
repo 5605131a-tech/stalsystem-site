@@ -911,6 +911,11 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
         <div class="ndi-txt"><div class="ndi-name">Wideodomofon</div><div class="ndi-desc">IP / Analogowy + montaż</div></div>
         <div class="ndi-price">od 4500 zł</div>
       </div>
+      <div class="ndrop-item" onclick="goCalc('sf')">
+        <div class="ndi-ico">☀️</div>
+        <div class="ndi-txt"><div class="ndi-name">Ogrodzenie Solarne</div><div class="ndi-desc">Panel = ogrodzenie + prąd</div></div>
+        <div class="ndi-price">od 600 zł/mb</div>
+      </div>
     </div>
   </div>
   <a href="tel:+48733245757" class="nav-phone" onclick="if(typeof fbq!=='undefined')fbq('track','Contact');if(typeof gtag!=='undefined')gtag('event','phone_call',{method:'nav'});">📞 733 245 757</a>
@@ -988,6 +993,7 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
   <button class="ptab" onclick="switchProd(this,'kb')"><span class="ico">🪨</span>Kostka brukowa</button>
   <button class="ptab" onclick="switchProd(this,'gb')"><span class="ico">🪨</span>Gabiony</button>
   <button class="ptab" onclick="switchProd(this,'wd')"><span class="ico">📹</span>Wideodomofon</button>
+  <button class="ptab" onclick="switchProd(this,'sf')"><span class="ico">☀️</span>Ogrodzenie Solarne<s style="font-size:0.58rem;color:inherit;opacity:.7;text-decoration:none">nowość</s></button>
 </div>
 
 <div class="card reveal">
@@ -1272,6 +1278,30 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
     <div id="res-wd"></div>
   </div>
 
+  <!-- OGRODZENIE SOLARNE -->
+  <div class="sec" id="sec-sf">
+    <div class="ctitle">☀️ Kalkulator ogrodzenia solarnego</div>
+    <div class="csub">Panel bifacjalny dwustronny = ogrodzenie + własny prąd. Obecnie dostępna wysokość ~1,4m (jedyny wariant wyceniony u dostawcy).</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+      <img src="img/solar-fence-1.jpg" alt="Ogrodzenie solarne — montaż panelu bifacjalnego" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
+      <img src="img/solar-fence-2.png" alt="Ogrodzenie solarne — wizualizacja" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
+    </div>
+    <div style="font-size:0.68rem;color:var(--gray);margin-top:-10px;margin-bottom:14px">* przykładowa wizualizacja koncepcji, nie nasza realizacja</div>
+    <div class="field"><label>Długość ogrodzenia (mb)</label>
+      <input type="number" id="sf-len" min="10" max="500" step="1" value="30" oninput="calcSf()">
+      <small>Min 10 m · Maks 500 m · wysokość ~1,4m · dostawa liczona osobno</small>
+    </div>
+    <div class="field"><label>Zakres zamówienia</label>
+      <div class="tiles t2">
+        <div class="tile on" data-g="sf-mode" data-v="mat" onclick="pick(this);calcSf()">📦 Tylko materiał</div>
+        <div class="tile" data-g="sf-mode" data-v="full" onclick="pick(this);calcSf()">🔧 Materiał + Montaż</div>
+      </div>
+      <input type="hidden" id="sf-mode" value="mat">
+    </div>
+    <button class="bcalc" onclick="calcSf()">☀️ OBLICZ OGRODZENIE SOLARNE</button>
+    <div class="res" id="res-sf"></div>
+  </div>
+
 </div><!-- /card -->
 
 <!-- GALERIA REALIZACJI -->
@@ -1392,6 +1422,7 @@ const FU={
   '2d':{'1.00':639.36,'1.20':700.30,'1.50':755.02,'1.70':815.98,'2.00':891.50}
 };
 const WI_FULL=258,WI_MAT=164,WI_M=1.23;
+const SF={mat:600,inst:600,powerPerMb:0.255,yieldPerKwp:800,areaPerMb:1.134};
 
 function mult(l){return l>=100?1.0:l>=70?1.15:l>=30?1.25:1.30}
 function postH(h){return h<=1.73?2.00:h<=2.03?2.30:2.50}
@@ -1419,7 +1450,7 @@ function switchProd(btn,id){
   
   // Facebook Pixel — ViewContent
   if(typeof fbq!=='undefined'){
-    const names={og:'Ogrodzenie 3D',dl:'DELUXE',br:'Brama',fu:'Furtka',wi:'Wiata',kb:'Kostka brukowa',gb:'Gabiony',wd:'Wideodomofon'};
+    const names={og:'Ogrodzenie 3D',dl:'DELUXE',br:'Brama',fu:'Furtka',wi:'Wiata',kb:'Kostka brukowa',gb:'Gabiony',wd:'Wideodomofon',sf:'Ogrodzenie Solarne'};
     fbq('track','ViewContent',{content_name:names[id]||id,content_category:'Ogrodzenia'});
   }
 }
@@ -1440,7 +1471,7 @@ function scrollToCalc(){
   document.getElementById('calc-anchor').scrollIntoView({behavior:'smooth'});
 }
 function goCalc(id){
-  const ids=['og','dl','br','fu','wi','kb','gb','wd'];
+  const ids=['og','dl','br','fu','wi','kb','gb','wd','sf'];
   const idx=ids.indexOf(id);
   if(idx>=0)document.querySelectorAll('.ptab')[idx].click();
   document.getElementById('ndrop').classList.remove('show');
@@ -1890,6 +1921,29 @@ function calcOg(){
     
     // VoiceFlow bot removed (not configured)
 }
+function calcSf(){
+  const len=Math.min(500,Math.max(10,parseFloat(gv('sf-len'))||30));
+  const mode=gv('sf-mode');
+  const area=len*SF.areaPerMb;
+  const power=len*SF.powerPerMb;
+  const energy=power*SF.yieldPerKwp;
+  const matC=len*SF.mat;
+  const instC=mode==='full'?len*SF.inst:0;
+  const total=matC+instC;
+  let rows=br(`Panele bifacjalne + stelaż — ${fmt(SF.mat)} zł/mb × ${len}m`,matC);
+  if(mode==='full')rows+=br(`Montaż (elektryka, inwerter, uziemienie) — ${fmt(SF.inst)} zł/mb × ${len}m`,instC);
+  rows+=brt(total);
+  showRes('sf',pbox(`Ogrodzenie Solarne · ${mode==='full'?'Materiał + Montaż':'Tylko materiał'}`,total,`~${fmt(total/len)} zł/mb · ${len} m · ${area.toFixed(1)} m² powierzchni paneli`)
+    +`<div class="notice" style="background:#fff7ed;border-color:#fdba74"><strong>☀️ Moc instalacji: ${power.toFixed(2)} kWp</strong> · szacowana produkcja: <strong>~${fmt(energy)} kWh/rok</strong></div>`
+    +ntc('Wycena orientacyjna, pilotażowa. Obecnie dostępna tylko wysokość ~1,4m. Cena ostateczna po pomiarze i doborze inwertera.')
+    +bkdn(rows)+leadHTML(`Ogrodzenie Solarne ${len}m`,total,[
+    {name:'Panele + stelaż',qty:len,unit:'mb',price_unit:SF.mat,total:Math.round(matC*100)/100},
+    ...(mode==='full'?[{name:'Montaż',qty:len,unit:'mb',price_unit:SF.inst,total:Math.round(instC*100)/100}]:[])
+  ]));
+  window.calculatorData={product:'ogrodzenie_solarne',product_pl:'Ogrodzenie Solarne',length:len,mode:mode,mode_text:mode==='full'?'montaż + materiał':'tylko materiał',power_kwp:Math.round(power*100)/100,energy_kwh_rok:Math.round(energy),price:Math.round(total),timestamp:new Date().toISOString()};
+  if(typeof fbq!=='undefined'){fbq('track','Lead',{content_name:'Ogrodzenie Solarne',value:Math.round(total),currency:'PLN'});}
+  if(typeof gtag!=='undefined'){gtag('event','generate_lead',{currency:'PLN',value:Math.round(total),content_name:'Ogrodzenie Solarne'});}
+}
 function calcDl(){
   const h=parseFloat(gv('dl-h'));const len=Math.min(500,Math.max(5,parseFloat(gv('dl-len'))||20));
   const mod=gv('dl-mode');
@@ -2059,7 +2113,14 @@ const FAQS=[
   ['Jakie kolory są dostępne?','Standardowo oferujemy dwa kolory: <strong>Grafit — RAL 7016</strong> (ciemnoszary, bardzo popularny) oraz <strong>Zieleń — RAL 6005</strong> (butelkowa zieleń, klasyczny wybór do ogrodów). Inne kolory RAL dostępne są <strong>na indywidualne zamówienie</strong> — zapytaj nas o swój kolor podczas bezpłatnego pomiaru.'],
   ['Czy mogę zamówić tylko materiał?','Tak. W kalkulatorze wybierz "Tylko materiał". Wysyłamy do całej Polski.'],
   ['Czy są jakieś dodatki gratis do zamówienia?','Tak! Do każdego zamówienia dodajemy <strong style="color:var(--orange)">elegancką tabliczkę adresową na ogrodzenie — całkowicie bezpłatnie</strong>. Tabliczka z numerem domu to gotowy produkt o wartości <strong>150 zł</strong>, który normalnie kupuje się osobno. U nas dostaje ją każdy klient przy realizacji zamówienia — bez żadnych warunków. Po prostu miły bonus na start 🎁'],
-  ['Jak się z wami skontaktować?','Messenger lub WhatsApp: najszybciej — odpiszemy w 30 min. Tel: +48 733 245 757. Email: biuro.stalsystem.pl@gmail.com. Pn–pt 8–18, sob 9–14.']
+  ['Jak się z wami skontaktować?','Messenger lub WhatsApp: najszybciej — odpiszemy w 30 min. Tel: +48 733 245 757. Email: biuro.stalsystem.pl@gmail.com. Pn–pt 8–18, sob 9–14.'],
+  ['Czym jest Ogrodzenie Solarne?','Panel bifacjalny (dwustronny) pełni funkcję sekcji ogrodzenia i jednocześnie generuje prąd — jedna strona łapie słońce rano, druga po południu. Ogrodzenie działa dokładnie jak zwykły płot, dodatkowo produkując energię.'],
+  ['Ile kosztuje Ogrodzenie Solarne?','Orientacyjnie od 600 zł/mb (tylko materiał) do ok. 1200 zł/mb (materiał + montaż z elektryką i inwerterem) — dokładną cenę pokazuje kalkulator po podaniu długości. To wciąż kilkukrotnie mniej niż na rynku niemieckim.'],
+  ['Ile prądu wyprodukuje takie ogrodzenie?','Szacunkowo ok. 800 kWh/kWp rocznie (wartość referencyjna dla pionowych instalacji bifacjalnych) — np. 30 mb ogrodzenia to ok. 7,65 kWp mocy i ok. 6100 kWh/rok produkcji. Dokładna produkcja zależy od nasłonecznienia działki.'],
+  ['Czy to gotowy, sprawdzony produkt?','To nowość w naszej ofercie — obecnie w fazie pilotażowej. Testujemy dostawców paneli i finalizujemy certyfikację pod polski rynek. Obecnie dostępna jest tylko wysokość ok. 1,4m; inne warianty wysokości pojawią się później.'],
+  ['Czy potrzebne jest pozwolenie na budowę?','Kwestię prawną (zgłoszenie czy pozwolenie na budowę dla konstrukcji "ogrodzenie + instalacja PV") wyjaśniamy obecnie z prawnikami i urzędami budownictwa. Dokładną odpowiedź podamy przed uruchomieniem sprzedaży — napisz do nas, poinformujemy Cię jako pierwszego.'],
+  ['Czy panel dwustronny (bifacjalny) pracuje przez cały dzień?','Tak — dzięki pionowemu montażowi jedna strona panelu łapie słońce rano (wschód), druga po południu (zachód). Dzięki temu ogrodzenie generuje prąd praktycznie przez cały dzień, z dwoma szczytami produkcji zamiast jednego jak w typowej instalacji dachowej skierowanej w jedną stronę.'],
+  ['Jaka jest gwarancja i żywotność paneli?','Panele bifacjalne to 12 lat gwarancji produktowej oraz 30 lat gwarancji liniowej na moc — po 30 latach panel gwarantowany jest na min. ok. 84,8% mocy początkowej. To dane producenta paneli (tier-1), niezależne od gwarancji na montaż ogrodzenia.']
 ];
 const faqEl=document.getElementById('faq');
 FAQS.forEach(([q,a],i)=>{
