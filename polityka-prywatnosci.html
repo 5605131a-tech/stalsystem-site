@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polityka Prywatności — StalSystem Polska</title>
+<style>
+  :root {
+    --bg: #F7F8FA;
+    --surface: #FFFFFF;
+    --border: #D0D5DD;
+    --muted-bg: #EEF0F4;
+    --text: #1A1D23;
+    --text-muted: #56606E;
+    --accent: #1B5E8C;
+    --accent-light: #E8F1F8;
+    --rule: #CBD2DA;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111318;
+      --surface: #1C1F27;
+      --border: #2E3340;
+      --muted-bg: #20242E;
+      --text: #E4E8EF;
+      --text-muted: #8A96A8;
+      --accent: #4A9FD4;
+      --accent-light: #162033;
+      --rule: #2A2F3C;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #F7F8FA; --surface: #FFFFFF; --border: #D0D5DD;
+    --muted-bg: #EEF0F4; --text: #1A1D23; --text-muted: #56606E;
+    --accent: #1B5E8C; --accent-light: #E8F1F8; --rule: #CBD2DA;
+  }
+  :root[data-theme="dark"] {
+    --bg: #111318; --surface: #1C1F27; --border: #2E3340;
+    --muted-bg: #20242E; --text: #E4E8EF; --text-muted: #8A96A8;
+    --accent: #4A9FD4; --accent-light: #162033; --rule: #2A2F3C;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+  }
+
+  .page-header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .company-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .company-badge::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+  }
+
+  section {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 10px 0 4px;
+  }
+
+  p { margin-bottom: 5px; }
+  p:last-child { margin-bottom: 0; }
+
+  ul, ol {
+    padding-left: 18px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  li { font-size: 14px; }
+
+  .info-box {
+    background: var(--muted-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .info-box strong {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .highlight-box {
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 8px 0;
+  }
+
+  th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 6px 10px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  td {
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .table-wrap { overflow-x: auto; }
+
+  a { color: var(--accent); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .contact-item {
+    background: var(--muted-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 8px 12px;
+  }
+
+  .contact-item .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  .contact-item .value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .page-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 600px) {
+    .meta { flex-direction: column; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="company-badge">StalSystem Polska</div>
+    <h1>Polityka Prywatności</h1>
+    <div class="meta">
+      <span>Obowiązuje od: 1 sierpnia 2026</span>
+      <span>Administrator: Anatoliy Romanchyshen</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <section id="administrator">
+    <h2>1. Administrator danych osobowych</h2>
+    <p>Administratorem Pana/Pani danych osobowych jest:</p>
+    <div class="info-box">
+      <strong>Dane administratora</strong>
+      <strong style="display:block;font-size:15px;text-transform:none;letter-spacing:0;color:var(--text);font-weight:700;margin-bottom:6px;">StalSystem Polska</strong>
+      Anatoliy Romanchyshen<br>
+      ul. Prandzeskiego 23, 63-000 Środa Wielkopolska<br>
+      E-mail: <a href="mailto:biuro.stalsystem.pl@gmail.com">biuro.stalsystem.pl@gmail.com</a><br>
+      Tel.: <a href="tel:+48733245757">+48 733 245 757</a>
+    </div>
+  </section>
+
+  <section id="zakres">
+    <h2>2. Zakres zbieranych danych</h2>
+    <p>Przetwarzamy dane osobowe, które Pan/Pani przekazuje nam bezpośrednio lub które zbieramy podczas korzystania z naszych usług:</p>
+    <ul>
+      <li><strong>Dane kontaktowe:</strong> imię i nazwisko, numer telefonu, adres e-mail</li>
+      <li><strong>Dane z formularzy reklamowych</strong> (Facebook/Meta Lead Ads): dane podane przy wypełnieniu formularza</li>
+      <li><strong>Zapytania i korespondencja:</strong> treść wiadomości, zapytania ofertowe</li>
+      <li><strong>Nagrania rozmów telefonicznych:</strong> głos i treść rozmowy (przy braku sprzeciwu wobec nagrywania)</li>
+      <li><strong>Dane techniczne:</strong> adres IP, dane urządzenia — wyłącznie w zakresie niezbędnym do świadczenia usług online</li>
+    </ul>
+  </section>
+
+  <section id="cele">
+    <h2>3. Cele i podstawy prawne przetwarzania</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Cel przetwarzania</th>
+            <th>Podstawa prawna (RODO)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Odpowiedź na zapytanie ofertowe / obsługa kontaktu</td>
+            <td>Art. 6 ust. 1 lit. b — wykonanie umowy / działania przedumowne</td>
+          </tr>
+          <tr>
+            <td>Kontakt telefoniczny w sprawie złożonego zapytania</td>
+            <td>Art. 6 ust. 1 lit. f — uzasadniony interes administratora</td>
+          </tr>
+          <tr>
+            <td>Nagrywanie rozmów dla celów jakościowych</td>
+            <td>Art. 6 ust. 1 lit. f — uzasadniony interes (poprawa jakości obsługi)</td>
+          </tr>
+          <tr>
+            <td>Marketing bezpośredni własnych usług</td>
+            <td>Art. 6 ust. 1 lit. f — uzasadniony interes (z prawem sprzeciwu)</td>
+          </tr>
+          <tr>
+            <td>Wykonanie zawartej umowy / realizacja zamówienia</td>
+            <td>Art. 6 ust. 1 lit. b — wykonanie umowy</td>
+          </tr>
+          <tr>
+            <td>Wypełnienie obowiązków podatkowych i rachunkowych</td>
+            <td>Art. 6 ust. 1 lit. c — obowiązek prawny</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="nagrania">
+    <h2>4. Nagrywanie rozmów i asystent głosowy AI</h2>
+
+    <div class="highlight-box">
+      Firma StalSystem Polska korzysta z automatycznego asystenta głosowego opartego na sztucznej inteligencji (AI). Zgodnie z Rozporządzeniem UE o AI (AI Act, art. 52), informujemy, że podczas rozmowy telefonicznej możesz rozmawiać z systemem AI, a nie z człowiekiem. Asystent poinformuje o tym fakcie na początku rozmowy.
+    </div>
+
+    <h3>Nagrywanie</h3>
+    <p>Rozmowy telefoniczne mogą być nagrywane w celach jakościowych i szkoleniowych. Informacja o nagraniu jest przekazywana na początku każdej rozmowy. Podstawą przetwarzania jest uzasadniony interes administratora (art. 6 ust. 1 lit. f RODO). Przysługuje Panu/Pani prawo wniesienia sprzeciwu wobec tego przetwarzania.</p>
+    <p>Jeśli nie wyraża Pan/Pani zgody na nagrywanie — prosimy o poinformowanie asystenta lub rozłączenie się. Dostępna jest wtedy alternatywna forma kontaktu: e-mail lub SMS.</p>
+
+    <h3>Prawo do rozmowy z człowiekiem</h3>
+    <p>Ma Pan/Pani prawo w każdej chwili zażądać przekazania rozmowy do konsultanta. Wystarczy powiedzieć <strong>„CZŁOWIEK"</strong> — asystent odnotuje prośbę i pracownik oddzwoni w godzinach pracy (9:00–18:00).</p>
+
+    <h3>Dostawca systemu AI</h3>
+    <p>System asystenta głosowego jest obsługiwany przez platformę <strong>Vapi AI</strong> (USA). Dane głosowe mogą być przetwarzane przez Vapi w ramach standardowych klauzul umownych (SCC) zapewniających odpowiedni poziom ochrony danych.</p>
+  </section>
+
+  <section id="przekazywanie">
+    <h2>5. Przekazywanie danych osobowych</h2>
+    <p>Dane osobowe mogą być przekazywane następującym kategoriom odbiorców:</p>
+    <ul>
+      <li><strong>Vapi AI Inc.</strong> (USA) — dostawca systemu asystenta głosowego; podstawa: SCC</li>
+      <li><strong>Supabase Inc.</strong> (USA/EU) — dostawca bazy danych; serwery w Unii Europejskiej</li>
+      <li><strong>Meta Platforms Ireland Ltd.</strong> — w zakresie danych z formularzy reklamowych Facebook</li>
+      <li><strong>Podwykonawcy montażu i dostawcy materiałów</strong> — wyłącznie w zakresie niezbędnym do realizacji zlecenia</li>
+      <li><strong>Biuro rachunkowe</strong> — w zakresie niezbędnym do rozliczeń</li>
+    </ul>
+    <p>Nie sprzedajemy danych osobowych podmiotom trzecim.</p>
+  </section>
+
+  <section id="okres">
+    <h2>6. Okres przechowywania danych</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Kategoria danych</th>
+            <th>Okres przechowywania</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dane z zapytania ofertowego (bez umowy)</td>
+            <td>12 miesięcy od ostatniego kontaktu</td>
+          </tr>
+          <tr>
+            <td>Dane z zawartej umowy</td>
+            <td>5 lat od zakończenia umowy (wymogi podatkowe)</td>
+          </tr>
+          <tr>
+            <td>Nagrania rozmów telefonicznych</td>
+            <td>90 dni, chyba że wymagane dłuższe przechowywanie</td>
+          </tr>
+          <tr>
+            <td>Dane marketingowe</td>
+            <td>Do wniesienia sprzeciwu lub cofnięcia zgody</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="prawa">
+    <h2>7. Prawa osoby, której dane dotyczą</h2>
+    <p>Na podstawie RODO przysługują Panu/Pani następujące prawa:</p>
+    <ul>
+      <li><strong>Prawo dostępu</strong> (art. 15) — informacja o przetwarzanych danych</li>
+      <li><strong>Prawo do sprostowania</strong> (art. 16) — poprawa błędnych lub uzupełnienie niekompletnych danych</li>
+      <li><strong>Prawo do usunięcia</strong> (art. 17) — „prawo do bycia zapomnianym"</li>
+      <li><strong>Prawo do ograniczenia przetwarzania</strong> (art. 18) — zablokowanie określonych operacji</li>
+      <li><strong>Prawo do przenoszenia danych</strong> (art. 20) — dane w ustrukturyzowanym formacie</li>
+      <li><strong>Prawo do sprzeciwu</strong> (art. 21) — wobec przetwarzania na podstawie uzasadnionego interesu lub w celach marketingowych</li>
+    </ul>
+    <div class="info-box">
+      <strong>Jak skorzystać z praw?</strong>
+      Kontakt: <a href="mailto:biuro.stalsystem.pl@gmail.com">biuro.stalsystem.pl@gmail.com</a> — dopisek „RODO". Odpowiedź w ciągu 30 dni.
+    </div>
+    <p>Przysługuje Panu/Pani również prawo wniesienia skargi do <strong>Prezesa Urzędu Ochrony Danych Osobowych</strong> (UODO), ul. Stawki 2, 00-193 Warszawa.</p>
+  </section>
+
+  <section id="kontakt">
+    <h2>8. Kontakt</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="label">E-mail</div>
+        <div class="value"><a href="mailto:biuro.stalsystem.pl@gmail.com">biuro.stalsystem.pl@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Telefon</div>
+        <div class="value"><a href="tel:+48733245757">+48 733 245 757</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Adres</div>
+        <div class="value">ul. Prandzeskiego 23<br>63-000 Środa Wielkopolska</div>
+      </div>
+    </div>
+    <p style="margin-top:14px;font-size:12px;color:var(--text-muted);">Bieżąca wersja polityki dostępna pod adresem <strong>stalsystem-polska.netlify.app/polityka-prywatnosci</strong>. Ostatnia aktualizacja: 2 sierpnia 2026.</p>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  © 2026 StalSystem Polska — Anatoliy Romanchyshen · Środa Wielkopolska
+</footer>
+
+</body>
+</html>
