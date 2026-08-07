@@ -1278,27 +1278,68 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
     <div id="res-wd"></div>
   </div>
 
-  <!-- OGRODZENIE SOLARNE -->
+    <!-- OGRODZENIE SOLARNE -->
   <div class="sec" id="sec-sf">
-    <div class="ctitle">☀️ Kalkulator ogrodzenia solarnego</div>
-    <div class="csub">Panel bifacjalny dwustronny = ogrodzenie + własny prąd. Obecnie dostępna wysokość ~1,4m (jedyny wariant wyceniony u dostawcy).</div>
+    <div class="ctitle">&#9728;&#65039; Kalkulator ogrodzenia solarnego</div>
+    <div class="csub">Panel bifacjalny Glass-Glass 460Wp &#183; szczeg&#243;&#322;owa wycena ka&#380;dej pozycji osobno: panele, s&#322;upy, fundament, kable, inwerter, akumulator</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
-      <img src="img/solar-fence-1.jpg" alt="Ogrodzenie solarne — montaż panelu bifacjalnego" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
-      <img src="img/solar-fence-2.png" alt="Ogrodzenie solarne — wizualizacja" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
+      <img src="img/solar-fence-1.jpg" alt="Ogrodzenie solarne" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
+      <img src="img/solar-fence-2.png" alt="Ogrodzenie solarne wizualizacja" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
     </div>
-    <div style="font-size:0.68rem;color:var(--gray);margin-top:-10px;margin-bottom:14px">* przykładowa wizualizacja koncepcji, nie nasza realizacja</div>
-    <div class="field"><label>Długość ogrodzenia (mb)</label>
-      <input type="number" id="sf-len" min="10" max="500" step="1" value="30" oninput="calcSf()">
-      <small>Min 10 m · Maks 500 m · wysokość ~1,4m · dostawa liczona osobno</small>
-    </div>
-    <div class="field"><label>Zakres zamówienia</label>
+    <div style="font-size:0.68rem;color:var(--gray);margin-top:-10px;margin-bottom:14px">* przyk&#322;adowa wizualizacja koncepcji, nie nasza realizacja</div>
+
+    <div class="field"><label>1. Orientacja panelu</label>
       <div class="tiles t2">
-        <div class="tile on" data-g="sf-mode" data-v="mat" onclick="pick(this);calcSf()">📦 Tylko materiał</div>
-        <div class="tile" data-g="sf-mode" data-v="full" onclick="pick(this);calcSf()">🔧 Materiał + Montaż</div>
+        <div class="tile on" data-g="sf-var" data-v="land" onclick="pick(this);sfChip()">Krajobrazowy<s>wys. ~1,23 m &#183; rozstaw 1,91 m</s></div>
+        <div class="tile" data-g="sf-var" data-v="port" onclick="pick(this);sfChip()">Portretowy<s>wys. ~2,01 m &#183; rozstaw 1,13 m</s></div>
+      </div>
+      <input type="hidden" id="sf-var" value="land">
+    </div>
+
+    <div id="sf-podmur-block">
+      <div class="field"><label>1b. Podm ur&#243;wka betonowa (co&#322;&#243;&#322;) &#8212; tylko dla Krajobrazowego</label>
+        <div class="tiles t4">
+          <div class="tile on" data-g="sf-podmur" data-v="none" onclick="pick(this)">Bez podm ur&#243;wki<s>+0 z&#322;</s></div>
+          <div class="tile" data-g="sf-podmur" data-v="h20" onclick="pick(this)">20 cm<s>~75 z&#322;/sekcj&#281;</s></div>
+          <div class="tile" data-g="sf-podmur" data-v="h30" onclick="pick(this)">30 cm<s>~106 z&#322;/sekcj&#281;</s></div>
+          <div class="tile" data-g="sf-podmur" data-v="h40" onclick="pick(this)">40 cm<s>~145 z&#322;/sekcj&#281;</s></div>
+        </div>
+        <input type="hidden" id="sf-podmur" value="none">
+      </div>
+    </div>
+
+    <div class="field"><label>2. D&#322;ugo&#347;&#263; ogrodzenia (mb)</label>
+      <input type="number" id="sf-len" min="5" max="500" step="1" value="20" oninput="sfChip()">
+      <small id="sf-chip">&#8596; ~10 paneli &#183; 11 s&#322;up&#243;w &#183; ~4,6 kWp</small>
+    </div>
+
+    <div class="field"><label>3. Fundament pod s&#322;upy &#183; 100&#215;100&#215;4mm HDG S355</label>
+      <div class="tiles t2">
+        <div class="tile on" data-g="sf-found" data-v="concrete" onclick="pick(this)">S&#322;up betonowany<s>wiercenie + beton &#183; ~150 z&#322;/szt</s></div>
+        <div class="tile" data-g="sf-found" data-v="screw" onclick="pick(this)">&#x1f300; &#346;ruba gruntowa<s>bez betonu &#183; 4&#215; szybciej &#183; ~280&#8211;350 z&#322;/szt</s></div>
+      </div>
+      <input type="hidden" id="sf-found" value="concrete">
+    </div>
+
+    <div class="field"><label>4. System elektryczny</label>
+      <div class="tiles t2">
+        <div class="tile on" data-g="sf-elec" data-v="none" onclick="pick(this)">Bez falownika<s>tylko ogrodzenie</s></div>
+        <div class="tile" data-g="sf-elec" data-v="inv" onclick="pick(this)">+ Falownik 4kW<s>+3 500 z&#322;</s></div>
+        <div class="tile" data-g="sf-elec" data-v="inv_bat5" onclick="pick(this)">+ Falownik + akum. 5kWh<s>+13 500 z&#322;</s></div>
+        <div class="tile" data-g="sf-elec" data-v="inv_bat10" onclick="pick(this)">+ Falownik + akum. 10kWh<s>+21 000 z&#322;</s></div>
+      </div>
+      <input type="hidden" id="sf-elec" value="none">
+    </div>
+
+    <div class="field"><label>5. Zakres zam&#243;wienia</label>
+      <div class="tiles t2">
+        <div class="tile on" data-g="sf-mode" data-v="mat" onclick="pick(this)">Tylko materia&#322;<s>odbieram sam</s></div>
+        <div class="tile" data-g="sf-mode" data-v="full" onclick="pick(this)">Materia&#322; + Monta&#380;<s>kompleksowo</s></div>
       </div>
       <input type="hidden" id="sf-mode" value="mat">
     </div>
-    <button class="bcalc" onclick="calcSf()">☀️ OBLICZ OGRODZENIE SOLARNE</button>
+
+    <button class="bcalc" onclick="calcSf()">&#9728;&#65039; OBLICZ OGRODZENIE SOLARNE</button>
     <div class="res" id="res-sf"></div>
   </div>
 
@@ -1423,6 +1464,25 @@ const FU={
 };
 const WI_FULL=258,WI_MAT=164,WI_M=1.23;
 const SF={mat:600,inst:600,powerPerMb:0.255,yieldPerKwp:800,areaPerMb:1.134};
+const SF_SOL={
+  PANEL:700,RAIL:150,
+  POST:{land:260,port:340},
+  CONCRETE:{drill:65,cement:85},
+  SCREW:{land:280,port:350},
+  PODMUR:{none:{plate:0,con:0,addH:0},h20:{plate:55,con:20,addH:20},h30:{plate:86,con:20,addH:30},h40:{plate:125,con:20,addH:40}},
+  CABLE:50,
+  INV:{
+    none:{inv_price:0,bat_price:0,inv_label:'',bat_label:'',elec:0},
+    inv:{inv_price:3500,bat_price:0,inv_label:'Falownik sieciowy 4kW',bat_label:'',elec:1200},
+    inv_bat5:{inv_price:5500,bat_price:8000,inv_label:'Falownik hybrydowy 5kW',bat_label:'Akumulator 5kWh',elec:1400},
+    inv_bat10:{inv_price:5500,bat_price:15500,inv_label:'Falownik hybrydowy 5kW',bat_label:'Akumulator 10kWh',elec:1600}
+  },
+  EARTH_MAT:500,EARTH_INST:450,
+  INST:{land:200,port:245},
+  DOCS:850,
+  SEC_W:{land:1.91,port:1.134},
+  KWH:320,ELEC:0.83,WP:460
+};
 
 function mult(l){return l>=100?1.0:l>=70?1.15:l>=30?1.25:1.30}
 function postH(h){return h<=1.73?2.00:h<=2.03?2.30:2.50}
@@ -1921,26 +1981,99 @@ function calcOg(){
     
     // VoiceFlow bot removed (not configured)
 }
+function sfChip(){
+  const v=gv('sf-var'),len=parseFloat(document.getElementById('sf-len').value)||20;
+  const secs=Math.ceil(len/SF_SOL.SEC_W[v]),posts=secs+1;
+  const kWp=(secs*SF_SOL.WP/1000).toFixed(1);
+  document.getElementById('sf-chip').textContent='⇔ ~'+secs+' paneli · '+posts+' słupów · ~'+kWp+' kWp';
+  document.getElementById('sf-podmur-block').style.display=v==='land'?'':'none';
+}
 function calcSf(){
-  const len=Math.min(500,Math.max(10,parseFloat(gv('sf-len'))||30));
-  const mode=gv('sf-mode');
-  const area=len*SF.areaPerMb;
-  const power=len*SF.powerPerMb;
-  const energy=power*SF.yieldPerKwp;
-  const matC=len*SF.mat;
-  const instC=mode==='full'?len*SF.inst:0;
-  const total=matC+instC;
-  let rows=br(`Panele bifacjalne + stelaż — ${fmt(SF.mat)} zł/mb × ${len}m`,matC);
-  if(mode==='full')rows+=br(`Montaż (elektryka, inwerter, uziemienie) — ${fmt(SF.inst)} zł/mb × ${len}m`,instC);
+  const v=gv('sf-var'),f=gv('sf-found'),elec=gv('sf-elec'),mode=gv('sf-mode');
+  const pd=v==='land'?gv('sf-podmur'):'none';
+  const len=Math.min(500,Math.max(5,parseFloat(gv('sf-len'))||20));
+  const secs=Math.ceil(len/SF_SOL.SEC_W[v]),posts=secs+1;
+  const kWp=(secs*SF_SOL.WP/1000).toFixed(1);
+  const pm=SF_SOL.PODMUR[pd],inv=SF_SOL.INV[elec];
+
+  const mat_panel=secs*SF_SOL.PANEL;
+  const mat_rail=secs*SF_SOL.RAIL;
+  const mat_post=f==='screw'?0:posts*SF_SOL.POST[v];
+  const mat_screw=f==='screw'?posts*SF_SOL.SCREW[v]:0;
+  const mat_podmur=pm.plate*secs+pm.con*posts;
+  const mat_cable=elec!=='none'?Math.ceil(len)*SF_SOL.CABLE:0;
+  const mat_inv=inv.inv_price;
+  const mat_bat=inv.bat_price;
+  const mat_elec_box=elec!=='none'?inv.elec:0;
+  const mat_earth=elec!=='none'?SF_SOL.EARTH_MAT:0;
+  const total_mat=mat_panel+mat_rail+mat_post+mat_screw+mat_podmur+mat_cable+mat_inv+mat_bat+mat_elec_box+mat_earth;
+
+  let rob_panel=0,rob_found=0,rob_earth=0,rob_docs=0;
+  if(mode==='full'){
+    rob_panel=len*SF_SOL.INST[v];
+    if(f==='concrete')rob_found=posts*(SF_SOL.CONCRETE.drill+SF_SOL.CONCRETE.cement);
+    if(elec!=='none'){rob_earth=SF_SOL.EARTH_INST;rob_docs=SF_SOL.DOCS;}
+  }
+  const total_rob=rob_panel+rob_found+rob_earth+rob_docs;
+  const total=total_mat+total_rob;
+
+  const annKwh=secs*SF_SOL.KWH;
+  const annSav=Math.round(annKwh*SF_SOL.ELEC);
+  const payback=annSav>0?(total/annSav).toFixed(1):'?';
+  const varLbl=v==='land'?'Krajobrazowy ~1,23 m':'Portretowy ~2,01 m';
+  const modeLbl=mode==='full'?'Materiał + Montaż':'Tylko materiał';
+
+  let rows='';
+  rows+=brs('— Panele i mocowanie —');
+  rows+=br('Panel bifacjalny 460Wp Glass-Glass ('+secs+' szt)',mat_panel);
+  rows+=br('Szyna AL YL-R13 + zaciski ('+secs+' sekcji)',mat_rail);
+  if(v==='land'&&pm.addH>0){
+    rows+=brs('— Podm urówka '+pm.addH+' cm —');
+    rows+=br('Płyta betonowa '+pm.addH+'cm ('+secs+' szt)',pm.plate*secs);
+    rows+=br('Łączniki do słupa ('+posts+' szt)',pm.con*posts);
+  }
+  rows+=brs('— Słupy i fundament —');
+  if(f==='concrete'){
+    rows+=br('Słup 100×100×4mm HDG S355 ('+posts+' szt)',mat_post);
+    if(mode==='full'){rows+=br('Wiercenie ø200mm ('+posts+' szt)',rob_found*SF_SOL.CONCRETE.drill/(SF_SOL.CONCRETE.drill+SF_SOL.CONCRETE.cement)||rob_found*0.43);rows+=br('Betonowanie ('+posts+' szt)',rob_found*SF_SOL.CONCRETE.cement/(SF_SOL.CONCRETE.drill+SF_SOL.CONCRETE.cement)||rob_found*0.57);}
+  }else{
+    rows+=br('Śruba gruntowa HDG ('+posts+' szt)',mat_screw);
+  }
+  if(elec!=='none'){
+    rows+=brs('— System elektryczny —');
+    rows+=br(inv.inv_label+' (1 szt)',mat_inv);
+    if(mat_bat>0)rows+=br(inv.bat_label+' (1 szt)',mat_bat);
+    rows+=br('Rozdzielnica AC/DC + SPD (1 kpl)',mat_elec_box);
+    rows+=br('Kabel DC+AC + Arot + MC4 ('+len+' mb)',mat_cable);
+    rows+=br('Uziemienie — materiał',mat_earth);
+    if(mode==='full'){rows+=br('Montaż falownika + uziemienie',rob_earth);rows+=br('Dokumentacja OSD + pomiary SEP D',rob_docs);}
+  }
+  if(mode==='full'){
+    rows+=brs('— Robocizna montażu —');
+    rows+=br('Montaż szyn + paneli ('+len+' mb × '+SF_SOL.INST[v]+' zł)',rob_panel);
+  }
   rows+=brt(total);
-  showRes('sf',pbox(`Ogrodzenie Solarne · ${mode==='full'?'Materiał + Montaż':'Tylko materiał'}`,total,`~${fmt(total/len)} zł/mb · ${len} m · ${area.toFixed(1)} m² powierzchni paneli`)
-    +`<div class="notice" style="background:#fff7ed;border-color:#fdba74"><strong>☀️ Moc instalacji: ${power.toFixed(2)} kWp</strong> · szacowana produkcja: <strong>~${fmt(energy)} kWh/rok</strong></div>`
-    +ntc('Wycena orientacyjna, pilotażowa. Obecnie dostępna tylko wysokość ~1,4m. Cena ostateczna po pomiarze i doborze inwertera.')
-    +bkdn(rows)+leadHTML(`Ogrodzenie Solarne ${len}m`,total,[
-    {name:'Panele + stelaż',qty:len,unit:'mb',price_unit:SF.mat,total:Math.round(matC*100)/100},
-    ...(mode==='full'?[{name:'Montaż',qty:len,unit:'mb',price_unit:SF.inst,total:Math.round(instC*100)/100}]:[])
-  ]));
-  window.calculatorData={product:'ogrodzenie_solarne',product_pl:'Ogrodzenie Solarne',length:len,mode:mode,mode_text:mode==='full'?'montaż + materiał':'tylko materiał',power_kwp:Math.round(power*100)/100,energy_kwh_rok:Math.round(energy),price:Math.round(total),timestamp:new Date().toISOString()};
+
+  const energyBox='<div class="notice" style="background:#f0fdf4;border-color:#86efac;color:#166534"><strong>⚡ Moc: '+kWp+' kWp</strong> · produkcja: ~'+fmt(annKwh)+' kWh/rok · oszczędność: ~'+fmt(annSav)+' zł/rok · zwrot ~'+payback+' lat</div>';
+  const leadItems=[
+    {name:'Panel bifacjalny 460Wp',qty:secs,unit:'szt',price_unit:SF_SOL.PANEL,total:mat_panel},
+    {name:'Szyna AL+zaciski',qty:secs,unit:'sek',price_unit:SF_SOL.RAIL,total:mat_rail},
+    ...(mat_post>0?[{name:'Słup HDG '+(v==='land'?'2250':'3050')+'mm',qty:posts,unit:'szt',price_unit:SF_SOL.POST[v],total:mat_post}]:[]),
+    ...(mat_screw>0?[{name:'Śruba gruntowa HDG',qty:posts,unit:'szt',price_unit:SF_SOL.SCREW[v],total:mat_screw}]:[]),
+    ...(mat_podmur>0?[{name:'Podm urówka '+pm.addH+'cm',qty:secs,unit:'szt',price_unit:pm.plate,total:mat_podmur}]:[]),
+    ...(mat_inv>0?[{name:inv.inv_label,qty:1,unit:'szt',price_unit:mat_inv,total:mat_inv}]:[]),
+    ...(mat_bat>0?[{name:inv.bat_label,qty:1,unit:'szt',price_unit:mat_bat,total:mat_bat}]:[]),
+    ...(mode==='full'?[{name:'Montaż',qty:len,unit:'mb',price_unit:SF_SOL.INST[v],total:rob_panel}]:[]),
+  ];
+  showRes('sf',
+    pbox('Ogrodzenie Solarne · '+varLbl+' · '+modeLbl, total,
+      secs+' paneli · '+posts+' '+(f==='screw'?'śrub gruntowych':'słupów')+' · '+kWp+' kWp · '+len+' mb')
+    +energyBox
+    +ntc('Cena orientacyjna. Ostateczna wycena po pomiarze i doborze inwertera. Dostawa liczona osobno.')
+    +bkdn(rows)
+    +leadHTML('Ogrodzenie Solarne '+len+'m',total,leadItems)
+  );
+  window.calculatorData={product:'ogrodzenie_solarne',product_pl:'Ogrodzenie Solarne',length:len,variant:v,foundation:f,elec:elec,mode:mode,power_kwp:parseFloat(kWp),energy_kwh_rok:annKwh,price:Math.round(total),timestamp:new Date().toISOString()};
   if(typeof fbq!=='undefined'){fbq('track','Lead',{content_name:'Ogrodzenie Solarne',value:Math.round(total),currency:'PLN'});}
   if(typeof gtag!=='undefined'){gtag('event','generate_lead',{currency:'PLN',value:Math.round(total),content_name:'Ogrodzenie Solarne'});}
 }
