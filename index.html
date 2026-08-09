@@ -869,9 +869,14 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
      80% клиентов видят это в первый момент
      ══════════════════════════════ -->
 <div class="sticky-bar">
-  <a href="sms:+484596744" class="sb-call" onclick="if(typeof fbq!=='undefined')fbq('track','Contact');if(typeof gtag!=='undefined')gtag('event','sms_click',{method:'sticky'});">
-    💬 NAPISZ: +48 484 596 744
-  </a>
+  <div style="display:flex;gap:8px;width:100%;padding:0 10px 4px">
+    <a href="tel:+484596744" class="sb-call" style="flex:1;font-size:0.95rem;padding:14px 8px;text-align:center" onclick="if(typeof fbq!=='undefined')fbq('track','Contact');if(typeof gtag!=='undefined')gtag('event','call_click',{method:'sticky'});">
+      📞 ZADZWOŃ
+    </a>
+    <a href="sms:+484596744" class="sb-call" style="flex:1;font-size:0.95rem;padding:14px 8px;text-align:center" onclick="if(typeof fbq!=='undefined')fbq('track','Contact');if(typeof gtag!=='undefined')gtag('event','sms_click',{method:'sticky'});">
+      💬 NAPISZ SMS
+    </a>
+  </div>
   <div style="font-size:10px;color:rgba(255,255,255,.6);padding:2px 16px 4px;text-align:center">🤖 Odpowiada asystent AI</div>
 </div>
 
@@ -2399,7 +2404,8 @@ const FAQS=[
   ['Ile prądu wyprodukuje takie ogrodzenie?','Szacunkowo ok. 800 kWh/kWp rocznie (wartość referencyjna dla pionowych instalacji bifacjalnych) — np. 30 mb ogrodzenia to ok. 7,65 kWp mocy i ok. 6100 kWh/rok produkcji. Dokładna produkcja zależy od nasłonecznienia działki.'],
   ['Czy to gotowy, sprawdzony produkt?','To nowość w naszej ofercie — obecnie w fazie pilotażowej. Testujemy dostawców paneli i finalizujemy certyfikację pod polski rynek. Obecnie dostępna jest tylko wysokość ok. 1,4m; inne warianty wysokości pojawią się później.'],
   ['Czy potrzebne jest pozwolenie na budowę?','Kwestię prawną (zgłoszenie czy pozwolenie na budowę dla konstrukcji "ogrodzenie + instalacja PV") wyjaśniamy obecnie z prawnikami i urzędami budownictwa. Dokładną odpowiedź podamy przed uruchomieniem sprzedaży — napisz do nas, poinformujemy Cię jako pierwszego.'],
-  ['Czy panel dwustronny (bifacjalny) pracuje przez cały dzień?','Tak — dzięki pionowemu montażowi jedna strona panelu łapie słońce rano (wschód), druga po południu (zachód). Dzięki temu ogrodzenie generuje prąd praktycznie przez cały dzień, z dwoma szczytami produkcji zamiast jednego jak w typowej instalacji dachowej skierowanej w jedną stronę.'],
+  ['Czy panel dwustronny (bifacjalny) pracuje przez cały dzień?','Tak — dzięki pionowemu montażowi jedna strona panelu łapie słońce rano (wschód), druga po południu (zachód), tworząc dwa szczyty produkcji zamiast jednego jak w typowej instalacji dachowej. Panele bifacjalne mają współczynnik dwustronnoci (KD) +10–15%, co przekłada się na wyższą łączną produkcję energii. Dodatkowy plus: stalowa konstrukcja ogrodzeniowa chroni panele przed śniegiem i deszczem, zmniejszając straty i wydłużając żywotność instalacji.'],
+  ['Czy mogę dostać dofinansowanie (dotację)?','Tak — Ogrodzenie Solarne spełnia kryteria programu Mój Prąd 6.0 jako mikroinstalacja fotowoltaiczna (2–20 kWp, przyłączona do sieci jako prosument). Dofinansowanie wynosi 6 000–7 000 zł za samą instalację PV, a z magazynem energii nawet do 28 000 zł łącznie. Wnioski składa się przez portal: mojprad.gov.pl'],
   ['Jaka jest gwarancja i żywotność paneli?','Panele bifacjalne to 12 lat gwarancji produktowej oraz 30 lat gwarancji liniowej na moc — po 30 latach panel gwarantowany jest na min. ok. 84,8% mocy początkowej. To dane producenta paneli (tier-1), niezależne od gwarancji na montaż ogrodzenia.']
 ];
 const faqEl=document.getElementById('faq');
