@@ -1356,7 +1356,7 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
       <img src="img/solar-fence-1.jpg" alt="Ogrodzenie solarne" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
       <img src="img/solar-fence-2.png" alt="Ogrodzenie solarne wizualizacja" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
     </div>
-    <div style="font-size:0.68rem;color:var(--gray);margin-top:-10px;margin-bottom:14px">* przyk&#322;adowa wizualizacja koncepcji, nie nasza realizacja</div>
+    <div style="font-size:0.68rem;color:var(--gray);margin-top:-10px;margin-bottom:14px">Przykład instalacji solarnej Glass-Glass</div>
 
     <div class="field"><label>1. Orientacja panelu</label>
       <div class="tiles t2">
@@ -1415,19 +1415,19 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
     <!-- SF ROI -->
     <div style="background:linear-gradient(135deg,#fff8f4,#fff3ec);border:1px solid #ffd5b8;border-radius:14px;padding:16px;margin:16px 0">
       <div style="font-size:0.9rem;font-weight:800;color:var(--navy);margin-bottom:10px">&#128161; Jak szybko się zwraca?</div>
-      <div style="font-size:0.76rem;color:var(--gray);margin-bottom:10px;line-height:1.5">Przykład: 30 mb (Krajobrazowy) z falownikiem sieciowym 4kW.</div>
+      <div id="roi-subtitle" style="font-size:0.76rem;color:var(--gray);margin-bottom:10px;line-height:1.5">Zmień parametry i kliknij OBLICZ — wyniki zaktualizują się automatycznie.</div>
       <div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed #f0c080;font-size:0.77rem">
-          <span style="color:var(--gray)">Koszt całkowity (materiał + montaż)</span><span style="font-weight:700;color:var(--navy)">~28 000–35 000 zł</span>
+          <span style="color:var(--gray)">Koszt całkowity (materiał + montaż)</span><span id="roi-cost" style="font-weight:700;color:var(--navy)">~28 000–35 000 zł</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed #f0c080;font-size:0.77rem">
-          <span style="color:var(--gray)">Produkcja energii rocznie (~4,6 kWp)</span><span style="font-weight:700;color:var(--navy)">~4 100 kWh</span>
+          <span id="roi-prod-label" style="color:var(--gray)">Produkcja energii rocznie (~4,6 kWp)</span><span id="roi-kwh" style="font-weight:700;color:var(--navy)">~4 100 kWh</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed #f0c080;font-size:0.77rem">
-          <span style="color:var(--gray)">Oszczędność przy cenie 0,83 zł/kWh</span><span style="font-weight:700;color:var(--navy)">~3 400 zł / rok</span>
+          <span style="color:var(--gray)">Oszczędność przy cenie 0,83 zł/kWh</span><span id="roi-sav" style="font-weight:700;color:var(--navy)">~3 400 zł / rok</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;font-size:0.82rem">
-          <span style="font-weight:800;color:var(--navy)">Szacowany zwrot</span><span style="font-weight:900;color:var(--orange);font-size:0.95rem">ok. 8–10 lat</span>
+          <span style="font-weight:800;color:var(--navy)">Szacowany zwrot</span><span id="roi-pay" style="font-weight:900;color:var(--orange);font-size:0.95rem">ok. 8–10 lat</span>
         </div>
       </div>
       <div style="font-size:0.63rem;color:var(--gray);margin-top:6px">* cena prądu 0,83 zł/kWh, nasłonecznienie 1050 kWh/kWp/rok (Wielkopolska). Wynik szacunkowy.</div>
@@ -1493,6 +1493,10 @@ src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
         <a href="tel:+484596744" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--orange);font-size:0.88rem;font-weight:900;padding:11px 22px;border-radius:10px;text-decoration:none">&#128222; Zadzwoń</a>
         <a href="sms:+484596744" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.2);color:#fff;font-size:0.88rem;font-weight:900;padding:11px 22px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.6)">&#128172; Wyślij SMS</a>
+      </div>
+      <div style="margin-top:12px;border-top:1px solid rgba(255,255,255,0.25);padding-top:12px">
+        <div style="font-size:0.73rem;color:rgba(255,255,255,0.75);margin-bottom:8px">&#128247; Wyślij nam zdjęcie swojej działki — przygotujemy wizualizację ogrodzenia solarnego <strong style="color:#fff">gratis w 24h</strong></div>
+        <a href="sms:+484596744?body=Witam%2C+chc%C4%99+zam%C3%B3wi%C4%87+wizualizacj%C4%99+ogrodzenia+solarnego+dla+mojej+dzia%C5%82ki.+Za%C5%82%C4%85czam+zdj%C4%99cie." style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.15);color:#fff;font-size:0.82rem;font-weight:800;padding:9px 18px;border-radius:10px;text-decoration:none;border:2px solid rgba(255,255,255,0.5)">&#128247; Wyślij zdjęcie działki</a>
       </div>
     </div>
 
@@ -2245,6 +2249,8 @@ function calcSf(){
     +bkdn(rows)
     +leadHTML('Ogrodzenie Solarne '+len+'m',total,leadItems)
   );
+  // update live ROI block
+  const roiCostEl=document.getElementById('roi-cost');const roiKwhEl=document.getElementById('roi-kwh');const roiSavEl=document.getElementById('roi-sav');const roiPayEl=document.getElementById('roi-pay');const roiSubEl=document.getElementById('roi-subtitle');const roiLabelEl=document.getElementById('roi-prod-label');if(roiCostEl){roiCostEl.textContent='~'+fmt(Math.round(total/1000)*1000)+'–'+fmt(Math.round(total/1000+3)*1000)+' zł';}if(roiKwhEl){roiKwhEl.textContent='~'+fmt(annKwh)+' kWh';}if(roiSavEl){roiSavEl.textContent='~'+fmt(annSav)+' zł / rok';}if(roiPayEl){roiPayEl.textContent=annSav>0?'ok. '+parseFloat(payback).toFixed(1)+' lat':'— (bez falownika)';}if(roiLabelEl){roiLabelEl.textContent='Produkcja energii rocznie (~'+kWp+' kWp)';}if(roiSubEl){roiSubEl.textContent='Twoja konfiguracja: '+len+' mb · '+varLbl+' · '+(elec==='none'?'bez falownika':elec==='inv'?'falownik 4kW':elec==='inv_bat5'?'falownik + akum. 5kWh':'falownik + akum. 10kWh')+'.';}
   window.calculatorData={product:'ogrodzenie_solarne',product_pl:'Ogrodzenie Solarne',length:len,variant:v,foundation:f,elec:elec,mode:mode,power_kwp:parseFloat(kWp),energy_kwh_rok:annKwh,price:Math.round(total),timestamp:new Date().toISOString()};
   if(typeof fbq!=='undefined'){fbq('track','Lead',{content_name:'Ogrodzenie Solarne',value:Math.round(total),currency:'PLN'});}
   if(typeof gtag!=='undefined'){gtag('event','generate_lead',{currency:'PLN',value:Math.round(total),content_name:'Ogrodzenie Solarne'});}
