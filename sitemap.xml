@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://stalsystem.pl/</loc>
+    <loc>https://stalsystem-polska.netlify.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://stalsystem.pl/polityka-prywatnosci.html</loc>
+    <loc>https://stalsystem-polska.netlify.app/polityka-prywatnosci.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
