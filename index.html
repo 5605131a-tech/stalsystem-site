@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -23,31 +23,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Facebook Pixel Code -->
+<!-- Analytics: consent-only RODO -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1013461709182103');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1013461709182103&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Facebook Pixel Code -->
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B9QH1CPDDS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-B9QH1CPDDS');
+function loadTrackers(){
+  if(window._trackersLoaded)return;window._trackersLoaded=true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1013461709182103');fbq('track','PageView');
+  fbq('init','934494976050338');fbq('track','PageView');
+  var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id=G-B9QH1CPDDS';document.head.appendChild(gs);
+  window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config','G-B9QH1CPDDS');
+}
+if(localStorage.getItem('cookieConsent')==='accepted'){loadTrackers();}
 </script>
 
 <!-- Schema.org LocalBusiness -->
@@ -805,23 +791,7 @@ input.valid-field {
   display:flex;align-items:center;gap:5px;
 }
 </style>
-<!-- Facebook Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '934494976050338');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=934494976050338&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Facebook Pixel Code -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1628,7 +1598,7 @@ Godziny pracy:</strong><br>
 <div style="padding:0 16px 8px;font-size:0.7rem;color:#94a3b8;line-height:1.8;">
   <strong style="color:#64748b">StalSystem Polska</strong> — Kostka brukowa, gabiony, wideodomofony, oświetlenie.
   Obsługujemy: <strong>Środa Wielkopolska</strong>, Poznań, Gniezno, Kalisz, Leszno, Kościan, Września, Ostrów Wielkopolski i całe <strong>województwo Wielkopolskie</strong>.
-  Materiały wysyłamy do całej Polski. Tel: <a href="tel:+484596744" style="color:#ff6b35">+48 484 596 744</a> · E-mail: <a href="mailto:biuro.stalsystem.pl@gmail.com" style="color:#ff6b35">biuro.stalsystem.pl@gmail.com</a> · <a href="/polityka-prywatnosci.html" style="color:#94a3b8">Polityka prywatności</a>
+  Materiały wysyłamy do całej Polski. Tel: <a href="tel:+484596744" style="color:#ff6b35">+48 484 596 744</a> · E-mail: <a href="mailto:biuro.stalsystem.pl@gmail.com" style="color:#ff6b35">biuro.stalsystem.pl@gmail.com</a> · <a href="https://www.facebook.com/profile.php?id=61586439991801" target="_blank" rel="noopener" style="color:#1877f2">Facebook</a> &middot; <a href="/polityka-prywatnosci.html" style="color:#94a3b8">Polityka prywatności</a>
 </div>
 </div><!-- /wrap -->
 
@@ -2615,5 +2585,8 @@ function calcWD(){
   });
 })();
 </script>
+
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#1e293b;color:#e2e8f0;padding:14px 20px;box-shadow:0 -4px 20px rgba(0,0,0,0.4);font-family:inherit;font-size:13px;line-height:1.5"><div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap"><p style="margin:0;flex:1;min-width:220px">Uzywamy plikow cookies (FB Pixel, Google Analytics) aby analizowac ruch i poprawic jakosc strony. Dane przetwarzane sa zgodnie z <a href="/polityka-prywatnosci.html" style="color:#ff6b35">Polityka prywatnosci</a>.</p><div style="display:flex;gap:10px;flex-shrink:0"><button onclick="acceptCookies()" style="background:#ff6b35;color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer">Akceptuj</button><button onclick="declineCookies()" style="background:transparent;color:#94a3b8;border:1px solid #475569;border-radius:8px;padding:9px 16px;font-size:13px;cursor:pointer">Tylko niezbedne</button></div></div></div>
+<script>(function(){var b=document.getElementById('cookie-banner');if(!b)return;if(localStorage.getItem('cookieConsent')){b.style.display='none';}else{b.style.display='block';}})();function acceptCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';loadTrackers();}function declineCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}</script>
 </body>
 </html>
