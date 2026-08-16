@@ -3208,13 +3208,13 @@ input.valid-field {
 
   <div class="cta-btns">
 
-    <button onclick="copyEmail(this)" class="ctabtn" style="background:#EA4335;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 14px rgba(234,67,53,0.4);cursor:pointer;border:none;font-family:inherit;">
+    <a href="mailto:biuro.stalsystem.pl@gmail.com?subject=Wycena%20ogrodzenia%20-%20StalSystem" class="ctabtn" style="background:#EA4335;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 14px rgba(234,67,53,0.4);">
 
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
 
-  <span id="email-btn-txt">biuro.stalsystem.pl@gmail.com</span>
+  Napisz na email
 
-</button>
+</a>
 
     <a href="tel:+484596744" class="ctabtn sec2">📞 484 596 744</a>
 
@@ -5299,19 +5299,7 @@ function calcWD(){
 
 <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#1e293b;color:#e2e8f0;padding:14px 20px;box-shadow:0 -4px 20px rgba(0,0,0,0.4);font-family:inherit;font-size:13px;line-height:1.5"><div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap"><p style="margin:0;flex:1;min-width:220px">Uzywamy plikow cookies (FB Pixel, Google Analytics) aby analizowac ruch i poprawic jakosc strony. Dane przetwarzane sa zgodnie z <a href="/polityka-prywatnosci.html" style="color:#ff6b35">Polityka prywatnosci</a>.</p><div style="display:flex;gap:10px;flex-shrink:0"><button onclick="acceptCookies()" style="background:#ff6b35;color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer">Akceptuj</button><button onclick="declineCookies()" style="background:transparent;color:#94a3b8;border:1px solid #475569;border-radius:8px;padding:9px 16px;font-size:13px;cursor:pointer">Tylko niezbedne</button></div></div></div>
 
-<script>(function(){var b=document.getElementById('cookie-banner');if(!b)return;if(localStorage.getItem('cookieConsent')){b.style.display='none';}else{b.style.display='block';}})();function acceptCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';loadTrackers();}function declineCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}
-function copyEmail(btn){
-  navigator.clipboard.writeText('biuro.stalsystem.pl@gmail.com').then(()=>{
-    const t=btn.querySelector('#email-btn-txt');
-    const orig=t.textContent;
-    t.textContent='Skopiowano! ✔';
-    btn.style.background='#16a34a';
-    setTimeout(()=>{t.textContent=orig;btn.style.background='#EA4335';},2500);
-  }).catch(()=>{
-    window.location.href='mailto:biuro.stalsystem.pl@gmail.com?subject=Wycena%20ogrodzenia%20-%20StalSystem';
-  });
-}
-</script>
+<script>(function(){var b=document.getElementById('cookie-banner');if(!b)return;if(localStorage.getItem('cookieConsent')){b.style.display='none';}else{b.style.display='block';}})();function acceptCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';loadTrackers();}function declineCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}</script>
 
 
 <!-- LIGHTBOX -->
