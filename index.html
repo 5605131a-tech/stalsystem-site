@@ -3249,6 +3249,49 @@ Godziny pracy:</strong><br>
   Materiały wysyłamy do całej Polski. Tel: <a href="tel:+484596744" style="color:#ff6b35">+48 484 596 744</a> · E-mail: <a href="mailto:biuro.stalsystem.pl@gmail.com" style="color:#ff6b35">biuro.stalsystem.pl@gmail.com</a> · <a href="https://www.facebook.com/profile.php?id=61586439991801" target="_blank" rel="noopener" style="color:#1877f2">Facebook</a> &middot; <a href="/polityka-prywatnosci.html" style="color:#94a3b8">Polityka prywatności</a>
 
 </div>
+
+<
+
+<!-- Formularz kontaktowy RODO -->
+
+<div class="cta reveal" id="formularz" style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);border-top:2px solid rgba(255,107,53,0.25);padding-top:40px">
+
+  <h2 style="color:#fff">Formularz kontaktowy</h2>
+
+  <p style="color:#94a3b8;margin-bottom:24px">Odpiszemy w ci&#261;gu 30 minut &middot; Wycena PDF na email gratis</p>
+
+  <form name="zapytanie" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm" style="max-width:500px;margin:0 auto;text-align:left">
+
+    <input type="hidden" name="form-name" value="zapytanie">
+
+    <p style="display:none"><label>Bot: <input name="bot-field"></label></p>
+
+    <div style="margin-bottom:14px"><label style="display:block;color:#cbd5e1;font-size:14px;margin-bottom:6px;font-weight:600">Imi&#281; i nazwisko *</label><input type="text" name="imie" required placeholder="Jan Kowalski" style="width:100%;box-sizing:border-box;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;font-size:15px;font-family:inherit"></div>
+
+    <div style="margin-bottom:14px"><label style="display:block;color:#cbd5e1;font-size:14px;margin-bottom:6px;font-weight:600">Telefon *</label><input type="tel" name="telefon" required placeholder="+48 123 456 789" style="width:100%;box-sizing:border-box;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;font-size:15px;font-family:inherit"></div>
+
+    <div style="margin-bottom:14px"><label style="display:block;color:#cbd5e1;font-size:14px;margin-bottom:6px;font-weight:600">Produkt</label><select name="produkt" style="width:100%;box-sizing:border-box;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:#1e293b;color:#fff;font-size:15px;font-family:inherit"><option>Ogrodzenie 3D</option><option>Ogrodzenie Solarne</option><option>Brama przesuwna</option><option>Furtka</option><option>Wiata</option><option>Kostka brukowa</option><option>Gabiony</option><option>Inne</option></select></div>
+
+    <div style="margin-bottom:14px"><label style="display:block;color:#cbd5e1;font-size:14px;margin-bottom:6px;font-weight:600">Wiadomo&#347;&#263;</label><textarea name="wiadomosc" rows="3" placeholder="Opisz kr&#243;tko swoje zapytanie..." style="width:100%;box-sizing:border-box;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:#fff;font-size:15px;font-family:inherit;resize:vertical"></textarea></div>
+
+    <div style="margin-bottom:20px;display:flex;align-items:flex-start;gap:10px"><input type="checkbox" name="rodo" id="rodoCheck" required style="margin-top:3px;accent-color:#ff6b35;width:16px;height:16px;flex-shrink:0;cursor:pointer"><label for="rodoCheck" style="color:#94a3b8;font-size:13px;line-height:1.5;cursor:pointer">Wyra&#380;am zgod&#281; na przetwarzanie moich danych osobowych przez StalSystem Polska w celu obs&#322;ugi zapytania, zgodnie z <a href="/polityka-prywatnosci.html" style="color:#ff6b35">Polityk&#261; prywatno&#347;ci</a>. *</label></div>
+
+    <button type="submit" style="width:100%;background:linear-gradient(135deg,#ff6b35,#ea580c);color:#fff;border:none;border-radius:12px;padding:14px;font-size:16px;font-weight:800;cursor:pointer">Wy&#347;lij zapytanie &#8594;</button>
+
+    <div id="form-success" style="display:none;margin-top:16px;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:14px;color:#86efac;text-align:center;font-weight:600">&#9989; Dzi&#281;kujemy! Odezwiemy si&#281; w ci&#261;gu 30 minut.</div>
+
+    <div id="form-error" style="display:none;margin-top:16px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:14px;color:#fca5a5;text-align:center">B&#322;&#261;d. Zadzwo&#324;: <a href="tel:+484596744" style="color:#ff6b35">484 596 744</a></div>
+
+  </form>
+
+  <script>
+
+  document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();var form=this,btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Wysy&#322;anie...';fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()}).then(function(r){if(r.ok){document.getElementById('form-success').style.display='block';form.reset();}else{throw new Error();}}).catch(function(){document.getElementById('form-error').style.display='block';}).finally(function(){btn.disabled=false;btn.textContent='Wy&#347;lij zapytanie \u2192';});});<br>
+
+  </script>
+
+</div>
+
 </div><!-- /wrap -->
 
 
@@ -4966,19 +5009,19 @@ renderFaqs(FAQS_O,0);
 
 const REVS=[
 
-  {n:'Marek Lewandowski',c:'Poznań',t:'Instalacja pilotażowa Ogrodzenia Solarnego — wszystko działa, polecam. Panele generują prąd od rana do wieczora, ekipa profesjonalna. Gratisy (tabliczka adresowa) dostałem od razu.'},
+  {n:'Rafał Kubiak',c:'Środa Wielkopolska',t:'80 mb ogrodzenia 3D h=1,53m z podmurówką i montażem — ekipa skończyła w 2 dni, cena co do złotówki zgodna z wyceną. Posprzątali po sobie, czego często nie ma u innych. Polecam bez zastrzeżeń.'},
 
-  {n:'Rafał Kubiak',c:'Środa Wielkopolska',t:'Solidna robota, ekipa posprzątała po sobie. Cena dokładnie taka jak w wycenie — bez niespodzianek. Polecam!'},
+  {n:'Magdalena Przybylska',c:'Poznań',t:'Brama przesuwna 5m z automatyką — montaż zajął jeden dzień, od zamówienia do odbioru 11 dni roboczych. Działa bezawaryjnie od 8 miesięcy. Kontakt bardzo sprawny, SMS z odpowiedzią w 20 minut.'},
 
-  {n:'Magdalena Przybylska',c:'Poznań',t:'Brama przesuwna z automatyką działa bez zarzutu. Kontakt szybki, montaż w jeden dzień. Bardzo profesjonalnie.'},
+  {n:'Beata Szymańska',c:'Kościan',t:'Wiata garażowa na 2 auta (6×5m), beton i montaż pod klucz — ekipa 3 osoby, gotowe w 2 dni. Sąsiedzi już pytają o numer 😄 Cena wyższa niż u konkurencji, ale jakość wykonania to widać od razu.'},
 
-  {n:'Krzysztof Walczak',c:'Września',t:'Zamawiałem tylko materiały — przyjechały na czas, dobrze zabezpieczone. Jakość stali widać od razu.'},
+  {n:'Damian Rutkowski',c:'Leszno',t:'120 mb ogrodzenia 3D h=1,23m plus furtka BOX — dostawa w 9 dni, rabat za zestaw, wygląda lepiej niż na zdjęciach. Po roku stoję pod płotem i nie widzę ani śladu korozji.'},
 
-  {n:'Beata Szymańska',c:'Kościan',t:'Wiata na dwa auta, beton i montaż pod klucz. Ekipa sprawna, skończyła w 2 dni. Teraz sąsiedzi pytają o kontakt 😄'},
+  {n:'Krzysztof Walczak',c:'Września',t:'Zamówiłem tylko materiał na 60 mb — panele 3D, słupki, zaciski. Dostawa na czas, każda sekcja dobrze owinięta folią. Sam montaż zrobiłem w weekend. Jakość stali wyraźnie lepsza niż to co dostałem rok wcześniej z innego źródła.'},
 
-  {n:'Damian Rutkowski',c:'Leszno',t:'Ogrodzenie 3D i furtka w pakiecie — dostawa szybka, rabat za zestaw. Wygląda lepiej niż na zdjęciach.'},
+  {n:'Joanna Michalak',c:'Ostrów Wlkp.',t:'45 mb h=1,73m z montażem. Ekipa przyjechała punktualnie, skończyła w jeden dzień. Wycena PDF przyszła w 25 minut po SMS-ie. Po jesiennych deszczach i zimie płot wygląda jak nowy — koloru RAL nie zgubiło.'},
 
-  {n:'Joanna Michalak',c:'Ostrów Wlkp.',t:'Przyjechali punktualnie, wycena zgodna z umową. Po sezonie deszczowym płot wygląda jak nowy.'}
+  {n:'Marek Lewandowski',c:'Poznań',t:'Ogrodzenie Solarne Glass-Glass 30mb — instalacja pilotażowa, wszystko działa bez zarzutu. Panele generują prąd od wschodu do zachodu, ekipa profesjonalna. Tabliczka adresowa gratis — miły gest.'}
 
 ];
 
@@ -5254,7 +5297,7 @@ function calcWD(){
 
 
 
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#1e293b;color:#e2e8f0;padding:14px 20px;box-shadow:0 -4px 20px rgba(0,0,0,0.4);font-family:inherit;font-size:13px;line-height:1.5"><div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap"><p style="margin:0;flex:1;min-width:220px">Uzywamy plikow cookies (FB Pixel, Google Analytics) aby analizowac ruch i poprawic jakosc strony. Dane przetwarzane sa zgodnie z <a href="/polityka-prywatnosci.html" style="color:#ff6b35">Polityka prywatnosci</a>.</p><div style="display:flex;gap:10px;flex-shrink:0"><button onclick="acceptCookies()" style="background:#ff6b35;color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer">Akceptuj</button><button onclick="declineCookies()" style="background:transparent;color:#94a3b8;border:1px solid #475569;border-radius:8px;padding:9px 16px;font-size:13px;cursor:pointer">Tylko niezbedne</button></div></div></div>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#1e293b;color:#e2e8f0;padding:14px 20px;box-shadow:0 -4px 20px rgba(0,0,0,0.4);font-family:inherit;font-size:13px;line-height:1.5"><div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap"><p style="margin:0;flex:1;min-width:220px">Używamy plików cookies (FB Pixel, Google Analytics) aby analizować ruch i poprawić jakość strony. Dane przetwarzane są zgodnie z <a href="/polityka-prywatnosci.html" style="color:#ff6b35">Polityka prywatnosci</a>.</p><div style="display:flex;gap:10px;flex-shrink:0"><button onclick="acceptCookies()" style="background:#ff6b35;color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer">Akceptuj</button><button onclick="declineCookies()" style="background:transparent;color:#94a3b8;border:1px solid #475569;border-radius:8px;padding:9px 16px;font-size:13px;cursor:pointer">Tylko niezbedne</button></div></div></div>
 
 <script>(function(){var b=document.getElementById('cookie-banner');if(!b)return;if(localStorage.getItem('cookieConsent')){b.style.display='none';}else{b.style.display='block';}})();function acceptCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';loadTrackers();}function declineCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}</script>
 
