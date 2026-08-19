@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://stalsystem-polska.netlify.app/sitemap.xml
-# updated 2026-08-19
+# deploy 2026-08-19b
