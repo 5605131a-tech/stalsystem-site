@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ochrona danych AI — StalSystem Polska</title>
+<style>
+  :root {
+    --bg: #F7F8FA;
+    --surface: #FFFFFF;
+    --border: #D0D5DD;
+    --muted-bg: #EEF0F4;
+    --text: #1A1D23;
+    --text-muted: #56606E;
+    --accent: #1B5E8C;
+    --accent-light: #E8F1F8;
+    --rule: #CBD2DA;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111318;
+      --surface: #1C1F27;
+      --border: #2E3340;
+      --muted-bg: #20242E;
+      --text: #E4E8EF;
+      --text-muted: #8A96A8;
+      --accent: #4A9FD4;
+      --accent-light: #162033;
+      --rule: #2A2F3C;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+  }
+  .page-header-inner { max-width: 680px; margin: 0 auto; }
+  .company-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .company-badge::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(17px, 3vw, 22px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .meta { font-size: 12px; color: var(--text-muted); }
+  .main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  section {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-child { border-bottom: none; }
+  h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 10px 0 4px;
+  }
+  p { margin-bottom: 5px; }
+  p:last-child { margin-bottom: 0; }
+  ul { padding-left: 18px; display: flex; flex-direction: column; gap: 3px; }
+  .highlight-box {
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+  .info-box {
+    background: var(--muted-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+  .info-box strong.label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .rights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .right-item {
+    background: var(--muted-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .right-item .right-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text);
+    display: block;
+    margin-bottom: 1px;
+  }
+  .right-item .right-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  a { color: var(--accent); }
+  .page-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="company-badge">StalSystem Polska</div>
+    <h1>Informacja RODO — Asystent glosowy AI</h1>
+    <div class="meta">Obowiazuje od: 1 sierpnia 2026 &middot; Art. 13 RODO / EU AI Act art. 52</div>
+  </div>
+</header>
+
+<main class="main">
+
+  <section>
+    <div class="highlight-box">
+      Rozmawiasz z <strong>Karolina</strong> &mdash; automatycznym asystentem glosowym opartym na sztucznej inteligencji (AI). Zgodnie z art.&nbsp;52 Rozporzadzenia UE o AI (AI Act) jestesmy zobowiazani poinformowac Cie o tym fakcie. W kazdej chwili mozesz poprosic o kontakt z czlowiekiem: powiedz <strong>&bdquo;CZLOWIEK&rdquo;</strong>.
+    </div>
+  </section>
+
+  <section>
+    <h2>Kto przetwarza Twoje dane</h2>
+    <div class="info-box">
+      <strong class="label">Administrator danych osobowych</strong>
+      <strong>StalSystem Polska</strong> &mdash; Anatoliy Romanchyshen<br>
+      ul. Prandzeskiego 23, 63-000 Sroda Wielkopolska<br>
+      E-mail: <a href="mailto:biuro.stalsystem.pl@gmail.com">biuro.stalsystem.pl@gmail.com</a> &mdash; dopisek &bdquo;RODO&rdquo;
+    </div>
+  </section>
+
+  <section>
+    <h2>Co przetwarzamy podczas rozmowy</h2>
+    <ul>
+      <li><strong>Twoj numer telefonu</strong> &mdash; w celu oddzwonienia (jesli prosisz o kontakt z czlowiekiem)</li>
+      <li><strong>Tresc rozmowy</strong> &mdash; przetwarzana w czasie rzeczywistym w celu odpowiedzi na pytania i umowienia wizyty</li>
+      <li><strong>Nagranie rozmowy</strong> &mdash; jezeli nie zglosisz sprzeciwu, rozmowa moze byc zarejestrowana w celach jakosciowych (art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;f RODO)</li>
+    </ul>
+    <h3>Przechowywanie</h3>
+    <p>Nagrania usuwamy po 90 dniach. Dane kontaktowe (telefon) przechowujemy do 12 miesiecy od ostatniego kontaktu, chyba ze wcześniej zglosisz sprzeciw.</p>
+    <h3>Podstawa prawna kontaktu telefonicznego</h3>
+    <p>Dzwonimy do Ciebie, poniewaz samodzielnie zostawiles/zos numer telefonu w formularzu kontaktowym lub reklamowym (art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;b RODO / art.&nbsp;398 PKE).</p>
+  </section>
+
+  <section>
+    <h2>Kto ma dostep do danych</h2>
+    <ul>
+      <li><strong>Vapi AI Inc.</strong> (USA) &mdash; platforma asystenta glosowego; umowa SCC zapewniajaca ochrone danych</li>
+      <li><strong>Anthropic PBC</strong> (USA) &mdash; model jezyka AI; dane przetwarzane bez trenowania na Twoich danych</li>
+      <li><strong>Supabase Inc.</strong> (serwery w EU) &mdash; baza danych CRM</li>
+    </ul>
+    <p>Nie sprzedajemy danych osobowych.</p>
+  </section>
+
+  <section>
+    <h2>Twoje prawa</h2>
+    <div class="rights-grid">
+      <div class="right-item">
+        <span class="right-name">Prawo dostepu</span>
+        <span class="right-desc">Zapytaj jakie dane przechowujemy</span>
+      </div>
+      <div class="right-item">
+        <span class="right-name">Prawo do usuniecia</span>
+        <span class="right-desc">&bdquo;Prawo do bycia zapomnianym&rdquo;</span>
+      </div>
+      <div class="right-item">
+        <span class="right-name">Prawo sprzeciwu</span>
+        <span class="right-desc">Wobec nagrywania lub marketingu</span>
+      </div>
+      <div class="right-item">
+        <span class="right-name">Prawo do skargi</span>
+        <span class="right-desc">Do UODO, ul. Stawki 2, Warszawa</span>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:10px">
+      <strong class="label">Jak skorzystac z praw?</strong>
+      Napisz na <a href="mailto:biuro.stalsystem.pl@gmail.com">biuro.stalsystem.pl@gmail.com</a> z dopiskiem <strong>&bdquo;RODO&rdquo;</strong>. Odpowiadamy w ciagu 30 dni.
+    </div>
+  </section>
+
+  <section>
+    <p style="font-size:12px;color:var(--text-muted)">
+      Pelna polityka prywatnosci: <a href="/polityka-prywatnosci.html">stalsystem-polska.netlify.app/polityka-prywatnosci</a>
+    </p>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  &copy; 2026 StalSystem Polska &mdash; Anatoliy Romanchyshen &middot; Sroda Wielkopolska
+</footer>
+
+</body>
+</html>
