@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+[Resource from github at repo://5605131a-tech/stalsystem-site/sha/6ef3751b4736f4434e9cbc4470f21ad0efe4d168/contents/index.html] <!DOCTYPE html>
 
 
 
@@ -3170,6 +3170,11 @@ input.valid-field {
 
 
 
+
+/* === CONVERSION BOOST === */
+@keyframes ctaPulse{0%{box-shadow:0 0 0 0 rgba(255,107,53,.7)}70%{box-shadow:0 0 0 14px rgba(255,107,53,0)}100%{box-shadow:0 0 0 0 rgba(255,107,53,0)}}
+.ctabtn.sec2{animation:ctaPulse 2.4s ease-out infinite}
+.ctabtn.sec2:hover{animation:none}
 </style>
 
 
@@ -3447,6 +3452,7 @@ input.valid-field {
   }
 ]
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 </head>
 
 
@@ -3767,7 +3773,7 @@ input.valid-field {
 
 
 
-  <div class="tb-item">⭐ 80+ realizacji</div>
+  <div class="tb-item">⭐ <span class="counter">80</span>+ realizacji</div>
 
 
 
@@ -3775,7 +3781,7 @@ input.valid-field {
 
 
 
-  <div class="tb-item">🏅 12 lat gwarancji</div>
+  <div class="tb-item">🏅 <span class="counter">12</span> lat gwarancji</div>
 
 
 
@@ -3783,7 +3789,7 @@ input.valid-field {
 
 
 
-  <div class="tb-item">⚡ Odpowiedź w 30 min</div>
+  <div class="tb-item">⚡ Odpowiedź w <span class="counter">30</span> min</div>
 
 
 
@@ -10704,6 +10710,35 @@ function calcDr(){
     <a href="/polityka-prywatnosci.html" style="color:rgba(255,255,255,0.6)">Polityka prywatności</a>
   </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:680,once:true,offset:50,easing:'ease-out-cubic'});
+
+// Counter animation
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var el=e.target,raw=el.textContent.trim();
+      var m=raw.match(/^(\d+)/);
+      if(m){
+        var target=parseInt(m[1],10),dur=target>50?1200:800,t0=null;
+        (function tick(ts){
+          if(!t0)t0=ts;
+          var p=Math.min((ts-t0)/dur,1),ease=1-Math.pow(1-p,3);
+          el.textContent=Math.round(ease*target);
+          if(p<1)requestAnimationFrame(tick);
+          else el.textContent=raw;
+        })(performance.now());
+      }
+      io.unobserve(el);
+    });
+  },{threshold:0.4});
+  document.querySelectorAll('.counter').forEach(function(el){io.observe(el);});
+})();
+</script>
+
 </body>
 
 </html>
