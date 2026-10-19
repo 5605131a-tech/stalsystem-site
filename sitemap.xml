@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://stalsystem-polska.netlify.app/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://stalsystem-polska.netlify.app/polityka-prywatnosci.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
+  <url><loc>https://stalsystem-polska.netlify.app/</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-ile-kosztuje-ogrodzenie-panelowe-3d.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-ogrodzenie-3d-czy-deluxe.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-brama-przesuwna-czy-dwuskrzydlowa.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-ogrodzenie-przepisy-zgloszenie-pozwolenie.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-jak-zamowic-ogrodzenie-krok-po-kroku.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-ogrodzenie-solarne-jak-dziala.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-podmurowka-pod-ogrodzenie-czy-warto.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-wiata-garazowa-stalowa-ile-kosztuje.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-gabiony-ogrodzenie-cena-za-metr.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog-kostka-brukowa-cena-ukladanie.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/blog.html</loc><lastmod>2026-10-19</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/faq.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/cennik-ogrodzen.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/ogrodzenie-solarne.html</loc><lastmod>2026-10-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/polityka-prywatnosci.html</loc><lastmod>2026-10-19</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://stalsystem-polska.netlify.app/rodo.html</loc><lastmod>2026-10-19</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
