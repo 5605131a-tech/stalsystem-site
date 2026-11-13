@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>Obrotnica samochodowa do podjazdu i garażu – zapytaj o wycenę</title>
+<meta name="description" content="Elektryczna obrotnica samochodowa do podjazdu lub garażu. Zostaw zapytanie, a przygotujemy wycenę z montażem dla Twojego podjazdu.">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1b2430;--mute:#5b6675;--acc:#c8601c;--line:#dde2e8}
+@media (prefers-color-scheme:dark){:root{--bg:#12161c;--card:#1b222b;--ink:#eef1f5;--mute:#a3adba;--acc:#ee8a45;--line:#2c3541}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header{padding:28px 0 8px}
+h1{font-size:clamp(26px,5vw,38px);line-height:1.15;margin:0 0 12px}
+h2{font-size:22px;margin:0 0 10px}
+.lead{color:var(--mute);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
+ul{padding-left:20px;margin:8px 0}
+li{margin:6px 0}
+.btn{display:inline-block;background:var(--acc);color:#fff;border:0;border-radius:10px;padding:14px 22px;font-size:17px;font-weight:600;cursor:pointer;text-decoration:none}
+label{display:block;font-weight:600;margin:14px 0 4px}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;margin-top:16px}
+.chk input{width:auto;margin-top:5px}
+small,.note{color:var(--mute);font-size:14px}
+footer{padding:24px 0 48px;color:var(--mute);font-size:14px}
+#msg{margin-top:14px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Koniec cofania z podjazdu na ulicę</h1>
+  <p class="lead">Elektryczna obrotnica samochodowa obraca auto na miejscu. Wjeżdżasz, naciskasz przycisk, wyjeżdżasz przodem. Zostaw zapytanie, a przygotujemy wycenę z montażem dla Twojego podjazdu lub garażu.</p>
+  <a class="btn" href="#formularz">Zapytaj o wycenę</a>
+</header>
+
+<section class="card">
+  <h2>Dla kogo to ma sens</h2>
+  <ul>
+    <li>wąski podjazd lub mała działka, na której nie da się zawrócić,</li>
+    <li>garaż przy ruchliwej drodze, z której niebezpiecznie jest cofać,</li>
+    <li>dom, w którym często parkuje więcej niż jedno auto,</li>
+    <li>osoba, która nie chce cofać z powodu wieku lub zdrowia.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Jak to wygląda w praktyce</h2>
+  <ul>
+    <li>Platforma zlicowana z nawierzchnią, średnica zwykle 4–5 m, nośność dobrana do auta (np. do 2,5–3 t).</li>
+    <li>Napęd elektryczny, sterowanie pilotem lub przyciskiem.</li>
+    <li>Potrzebne są: fundament (płyta betonowa) i przyłącze elektryczne. Wykonanie ustalamy po obejrzeniu miejsca.</li>
+    <li>Cena zależy od średnicy, nośności i przygotowania podłoża. Na rynku to zwykle kilkadziesiąt tysięcy złotych z montażem. Dokładną wycenę podamy po rozmowie i zdjęciach podjazdu.</li>
+  </ul>
+  <p class="note">Zbieramy zapytania i sprawdzamy realne zainteresowanie. Zapytanie nie jest zamówieniem i do niczego nie zobowiązuje.</p>
+</section>
+
+<section class="card" id="formularz">
+  <h2>Zapytaj o wycenę</h2>
+  <form id="f" novalidate>
+    <div class="row">
+      <div><label for="imie">Imię</label><input id="imie" name="imie" autocomplete="given-name" required></div>
+      <div><label for="tel">Telefon</label><input id="tel" name="tel" type="tel" autocomplete="tel" required></div>
+    </div>
+    <div class="row">
+      <div><label for="miasto">Miejscowość</label><input id="miasto" name="miasto" required></div>
+      <div><label for="mail">E-mail (opcjonalnie)</label><input id="mail" name="mail" type="email" autocomplete="email"></div>
+    </div>
+    <div class="row">
+      <div><label for="miejsce">Gdzie ma stanąć obrotnica</label>
+        <select id="miejsce" name="miejsce"><option>Podjazd przed domem</option><option>Garaż / wjazd do garażu</option><option>Firma / parking</option><option>Inne</option></select></div>
+      <div><label for="szer">Wolne miejsce (szerokość x długość, m)</label><input id="szer" name="szer" placeholder="np. 5 x 6"></div>
+    </div>
+    <div class="row">
+      <div><label for="auto">Największe auto, które ma być obracane</label><input id="auto" name="auto" placeholder="np. SUV, ok. 2 t"></div>
+      <div><label for="budzet">Planowany budżet</label>
+        <select id="budzet" name="budzet"><option value="nie_wiem">Jeszcze nie wiem</option><option value="do25">do 25 tys. zł</option><option value="25-40">25–40 tys. zł</option><option value="40+">powyżej 40 tys. zł</option></select></div>
+    </div>
+    <label for="kiedy">Kiedy planujesz montaż</label>
+    <select id="kiedy" name="kiedy"><option value="3m">w ciągu 3 miesięcy</option><option value="6m">w ciągu pół roku</option><option value="rok">w ciągu roku</option><option value="ciekawosc">na razie sprawdzam ceny</option></select>
+    <label class="chk"><input type="checkbox" id="zgoda" required><span>Wyrażam zgodę na kontakt telefoniczny lub e-mailowy w sprawie wyceny. Dane przetwarza StalSystem Polska wyłącznie w tym celu i usunie je na Twoje żądanie.</span></label>
+    <p><button class="btn" type="submit">Wyślij zapytanie</button></p>
+    <div id="msg" role="status"></div>
+  </form>
+  <p class="note">Wolisz zadzwonić? <a href="tel:+48573568255">+48 573 568 255</a></p>
+</section>
+
+<footer><a href="https://www.facebook.com/profile.php?id=61586439991801" rel="me noopener">StalSystem Polska na Facebooku</a> · StalSystem Polska, ul. Prądzyńskiego 23, 63-000 Środa Wielkopolska. Strona zbiera zapytania, nie jest ofertą handlową w rozumieniu art. 66 Kodeksu cywilnego.</footer>
+</div>
+<script>
+(function(){
+  // n8n 27.1 (id 8koHewANV59rz19d), zapis do Data Table obrotnica_leads + Telegram.
+  var WEBHOOK = "https://178.105.194.238.sslip.io/webhook/obrotnica-lead";
+  var f = document.getElementById('f'), msg = document.getElementById('msg');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var d = {}; new FormData(f).forEach(function(v,k){ d[k]=v; });
+    if(!d.imie || !d.tel || !d.miasto){ msg.textContent = 'Uzupełnij imię, telefon i miejscowość.'; return; }
+    if(!document.getElementById('zgoda').checked){ msg.textContent = 'Zaznacz zgodę na kontakt.'; return; }
+    d.zrodlo = (new URLSearchParams(location.search)).get('src') || 'direct';
+    d.strona = 'obrotnica-test';
+    if(WEBHOOK.indexOf('TODO') > -1){ msg.textContent = 'Formularz nie jest jeszcze podłączony (tryb podglądu).'; return; }
+    fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); msg.textContent = 'Dziękujemy. Oddzwonimy w ciągu jednego dnia roboczego.'; f.reset(); })
+      .catch(function(){ msg.textContent = 'Nie udało się wysłać. Zadzwoń: +48 573 568 255.'; });
+  });
+})();
+</script>
+</body>
+</html>
