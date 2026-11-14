@@ -87,7 +87,7 @@ footer{padding:24px 0 48px;color:var(--mute);font-size:14px}
     <p><button class="btn" type="submit">Wyślij zapytanie</button></p>
     <div id="msg" role="status"></div>
   </form>
-  <p class="note">Wolisz zadzwonić? <a href="tel:+48573568255">+48 573 568 255</a></p>
+  <p class="note">Wolisz napisać? Wyślij SMS: <a href="sms:+48733245757">+48 733 245 757</a></p>
 </section>
 
 <footer><a href="https://www.facebook.com/profile.php?id=61586439991801" rel="me noopener">StalSystem Polska na Facebooku</a> · StalSystem Polska, ul. Prądzyńskiego 23, 63-000 Środa Wielkopolska. Strona zbiera zapytania, nie jest ofertą handlową w rozumieniu art. 66 Kodeksu cywilnego.</footer>
@@ -107,7 +107,7 @@ footer{padding:24px 0 48px;color:var(--mute);font-size:14px}
     if(WEBHOOK.indexOf('TODO') > -1){ msg.textContent = 'Formularz nie jest jeszcze podłączony (tryb podglądu).'; return; }
     fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){ if(!r.ok) throw new Error(r.status); msg.textContent = 'Dziękujemy. Oddzwonimy w ciągu jednego dnia roboczego.'; f.reset(); })
-      .catch(function(){ msg.textContent = 'Nie udało się wysłać. Zadzwoń: +48 573 568 255.'; });
+      .catch(function(){ msg.textContent = 'Nie udało się wysłać. Wyślij SMS: +48 733 245 757.'; });
   });
 })();
 </script>
